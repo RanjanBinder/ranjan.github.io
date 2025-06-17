@@ -31,6 +31,34 @@
             overflow-x: hidden;
         }
 
+        /* Contact link styles */
+        .contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact-link:hover {
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .contact-link:hover::after {
+            width: 100%;
+        }
+
         /* Animated background */
         .bg-animation {
             position: fixed;
@@ -367,7 +395,6 @@
         }
 
         .contact-item:hover {
-            color: var(--text-primary);
             transform: translateY(-2px);
         }
 
