@@ -14,13 +14,14 @@
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
-            --secondary: #ec4899;
-            --accent: #06b6d4;
-            --bg-dark: #0f0f23;
-            --bg-card: #1a1a2e;
+            --secondary: #9c27b0;
+            --accent: #00bcd4;
+            --bg-dark: #0a0a1a;
+            --bg-card: #12122b;
             --text-primary: #ffffff;
-            --text-secondary: #a1a1aa;
+            --text-secondary: #b0b0d0;
             --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --star-color: rgba(255, 255, 255, 0.8);
         }
 
         body {
@@ -29,6 +30,10 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(156, 39, 176, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 30%, rgba(0, 188, 212, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 20%);
         }
 
         /* Contact link styles */
@@ -59,7 +64,7 @@
             width: 100%;
         }
 
-        /* Animated background */
+        /* Animated background with stars */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -68,25 +73,44 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
+            overflow: hidden;
         }
 
-        .bg-animation::before {
-            content: '';
+        .star {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
+            background-color: var(--star-color);
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(1deg); }
-            66% { transform: translateY(10px) rotate(-1deg); }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, var(--star-color) 50%, rgba(255,255,255,0) 100%);
+            border-radius: 50%;
+            animation: shoot var(--duration) linear infinite;
+            transform: rotate(45deg);
+            opacity: 0;
+        }
+
+        @keyframes shoot {
+            0% { 
+                transform: translateX(0) translateY(0) rotate(45deg);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateX(1000px) translateY(-500px) rotate(45deg);
+                opacity: 0;
+            }
         }
 
         /* Navigation */
@@ -95,7 +119,7 @@
             top: 0;
             width: 100%;
             padding: 1rem 2rem;
-            background: rgba(15, 15, 35, 0.9);
+            background: rgba(10, 10, 26, 0.9);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
@@ -103,8 +127,8 @@
         }
 
         nav.scrolled {
-            background: rgba(15, 15, 35, 0.95);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(10, 10, 26, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         nav ul {
@@ -150,11 +174,31 @@
             justify-content: center;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
         .hero-content {
             z-index: 2;
             animation: slideUp 1s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.8);
         }
 
         .hero h1 {
@@ -191,6 +235,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            margin: 0.5rem;
         }
 
         .cta-button:hover {
@@ -213,11 +258,18 @@
             left: 100%;
         }
 
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         /* Sections */
         section {
             padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section-title {
@@ -260,7 +312,7 @@
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
 
         .project-card::before {
@@ -290,6 +342,19 @@
             justify-content: center;
             font-size: 3rem;
             opacity: 0.8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white" opacity="0.8"/><circle cx="50" cy="30" r="1" fill="white" opacity="0.8"/><circle cx="80" cy="20" r="1.5" fill="white" opacity="0.8"/><circle cx="30" cy="70" r="1" fill="white" opacity="0.8"/><circle cx="70" cy="80" r="1" fill="white" opacity="0.8"/><circle cx="90" cy="60" r="1.5" fill="white" opacity="0.8"/></svg>');
+            opacity: 0.3;
         }
 
         .project-card h3 {
@@ -343,305 +408,4 @@
         /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .skill-category {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .skill-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Animations */
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="bg-animation"></div>
-    
-    <nav id="navbar">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Ranjan</h1>
-            <p>Buisness Intellgience Analyst & Power BI Developer</p>
-            <a href="#projects" class="cta-button">View My Work</a>
-        </div>
-    </section>
-
-    <section id="projects" class="fade-in">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image">🚀</div>
-                <h3>Project One</h3>
-                <p>A modern web application built with cutting-edge technologies. Features responsive design and seamless user experience.</p>
-                <div class="project-tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">MongoDB</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link">Live Demo</a>
-                    <a href="#" class="project-link">GitHub</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">💻</div>
-                <h3>Project Two</h3>
-                <p>An innovative mobile application that solves real-world problems with elegant design and powerful functionality.</p>
-                <div class="project-tags">
-                    <span class="tag">React Native</span>
-                    <span class="tag">Firebase</span>
-                    <span class="tag">TypeScript</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link">Live Demo</a>
-                    <a href="#" class="project-link">GitHub</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">🎨</div>
-                <h3>Project Three</h3>
-                <p>A creative digital solution that combines beautiful design with powerful backend architecture.</p>
-                <div class="project-tags">
-                    <span class="tag">Vue.js</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">PostgreSQL</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link">Live Demo</a>
-                    <a href="#" class="project-link">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="fade-in">
-        <h2 class="section-title">Skills & Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <div class="skill-icon">⚡</div>
-                <h3>Frontend Development</h3>
-                <p>React, Vue.js, Angular, TypeScript, HTML5, CSS3, SASS</p>
-            </div>
-            <div class="skill-category">
-                <div class="skill-icon">🔧</div>
-                <h3>Backend Development</h3>
-                <p>Node.js, Python, Django, Express.js, REST APIs, GraphQL</p>
-            </div>
-            <div class="skill-category">
-                <div class="skill-icon">🗄️</div>
-                <h3>Database & Cloud</h3>
-                <p>MongoDB, PostgreSQL, AWS, Firebase, Docker, Kubernetes</p>
-            </div>
-            <div class="skill-category">
-                <div class="skill-icon">📱</div>
-                <h3>Mobile Development</h3>
-                <p>React Native, Flutter, iOS, Android, Progressive Web Apps</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="fade-in">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-content">
-            <p>I'm always interested in new opportunities and exciting projects. Let's connect and create something amazing together!</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <span>📧</span>
-                    <a href="mailto:smrutiranjan.swain@hotmail.com" class="contact-link">smrutiranjan.swain@hotmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <span>📱</span>
-                    <a href="tel:+918926298914" class="contact-link">+91 8926298914</a>
-                </div>
-                <div class="contact-item">
-                    <span>🔗</span>
-                    <a href="https://www.linkedin.com/in/ranjan-bi/" target="_blank" rel="noopener noreferrer" class="contact-link">LinkedIn Profile</a>
-                </div>
-                <div class="contact-item">
-                    <span>🐙</span>
-                    <a href="https://github.com/RanjanBinder" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub Profile</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all elements with fade-in class
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Project cards hover effect
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Add some interactive particles (optional enhancement)
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.style.position = 'fixed';
-            particle.style.width = '4px';
-            particle.style.height = '4px';
-            particle.style.background = 'rgba(99, 102, 241, 0.6)';
-            particle.style.borderRadius = '50%';
-            particle.style.pointerEvents = 'none';
-            particle.style.zIndex = '1';
-            particle.style.left = Math.random() * window.innerWidth + 'px';
-            particle.style.top = window.innerHeight + 'px';
-            
-            document.body.appendChild(particle);
-            
-            const animation = particle.animate([
-                { transform: 'translateY(0px)', opacity: 1 },
-                { transform: `translateY(-${window.innerHeight + 100}px)`, opacity: 0 }
-            ], {
-                duration: Math.random() * 3000 + 2000,
-                easing: 'linear'
-            });
-            
-            animation.onfinish = () => particle.remove();
-        }
-
-        // Create particles periodically
-        setInterval(createParticle, 300);
-    </script>
-</body>
-</html>
+            grid-template-columns: repeat(auto-fit
