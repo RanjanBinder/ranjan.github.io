@@ -1,3 +1,4 @@
+Put your HTML text here
 <!DOCTYPE html>
 <html lang="en">
 
@@ -366,7 +367,6 @@
         }
 
         /* Roadmap Section */
-        /* Roadmap Section */
         .roadmap {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f172a 100%);
             border-radius: 30px;
@@ -590,11 +590,31 @@
         }
 
         /* Technology Section */
-        .tech-grid {
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #86868b;
+            margin-bottom: 4rem;
+            font-weight: 400;
+        }
+
+        .tech-categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
             margin-top: 3rem;
+        }
+
+        .tech-category {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .tech-item {
@@ -606,6 +626,93 @@
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(20px);
+        }
+
+        .tech-category.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tech-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .tech-category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .tech-category-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .tech-category-items {
+            font-size: 0.95rem;
+            color: #86868b;
+            line-height: 1.6;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        /* Mobile responsive for tech categories */
+        @media (max-width: 768px) {
+            .tech-categories-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .tech-category {
+                padding: 2rem 1.5rem;
+            }
+
+            .tech-category-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+
+            .tech-category-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Update stagger animation for new tech categories */
+        .tech-category:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .tech-category:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .tech-category:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .tech-category:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .tech-category:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        .tech-category:nth-child(6) {
+            transition-delay: 0.6s;
         }
 
         .tech-item.visible {
@@ -796,7 +903,6 @@
             }
         }
 
-        /* Mobile Responsive */
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav-center {
@@ -1054,38 +1160,73 @@
     <!-- Technology Section -->
     <section id="technology" class="section">
         <h2 class="section-title">Technology Stack</h2>
-        <div class="tech-grid">
-            <div class="tech-item">
-                <div class="tech-icon"><i class="fas fa-chart-bar"></i></div>
-                <div class="tech-name">Power BI</div>
+        <p class="section-subtitle">Tools and technologies I use to create powerful data solutions</p>
+
+        <div class="tech-categories-grid">
+            <!-- Business Intelligence -->
+            <div class="tech-category">
+                <div class="tech-category-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3 class="tech-category-title">Business Intelligence</h3>
+                <div class="tech-category-items">
+                    Power BI • Tableau • QlikView • SSRS • Power Pivot
+                </div>
             </div>
-            <div class="tech-item">
-                <div class="tech-icon"><i class="fas fa-code"></i></div>
-                <div class="tech-name">DAX</div>
+
+            <!-- Databases & Query Languages -->
+            <div class="tech-category">
+                <div class="tech-category-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3 class="tech-category-title">Databases & Query Languages</h3>
+                <div class="tech-category-items">
+                    SQL Server • MySQL • PostgreSQL • Oracle • DAX • M Query
+                </div>
             </div>
-            <div class="tech-item">
-                <div class="tech-icon"><i class="fas fa-database"></i></div>
-                <div class="tech-name">SQL Server</div>
+
+            <!-- Data Analysis -->
+            <div class="tech-category">
+                <div class="tech-category-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="tech-category-title">Data Analysis</h3>
+                <div class="tech-category-items">
+                    Excel • Python • R • Power Query • Statistical Analysis
+                </div>
             </div>
-            <div class="tech-item">
-                <div class="tech-icon"><i class="fab fa-microsoft"></i></div>
-                <div class="tech-name">Azure</div>
+
+            <!-- Cloud Platforms -->
+            <div class="tech-category">
+                <div class="tech-category-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3 class="tech-category-title">Cloud Platforms</h3>
+                <div class="tech-category-items">
+                    Azure • AWS • Power Platform • SharePoint • Office 365
+                </div>
             </div>
-            <div class="tech-item">
-                <div class="tech-icon"><i class="fab fa-python"></i></div>
-                <div class="tech-name">Python</div>
+
+            <!-- Tools & Others -->
+            <div class="tech-category">
+                <div class="tech-category-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="tech-category-title">Tools & Others</h3>
+                <div class="tech-category-items">
+                    SSIS • Azure Data Factory • Git • Jupyter • VS Code
+                </div>
             </div>
-            <div class="tech-item">
-                <div class="tech-icon"><i class="fas fa-brain"></i></div>
-                <div class="tech-name">AI/ML</div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon"><i class="fas fa-table"></i></div>
-                <div class="tech-name">Excel</div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-icon"><i class="fas fa-cloud"></i></div>
-                <div class="tech-name">Azure Synapse</div>
+
+            <!-- Methodologies -->
+            <div class="tech-category">
+                <div class="tech-category-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3 class="tech-category-title">Methodologies</h3>
+                <div class="tech-category-items">
+                    Agile • Scrum • Data Modeling • ETL • Data Warehousing
+                </div>
             </div>
         </div>
     </section>
@@ -1115,7 +1256,7 @@
 
     <!-- Chatbot -->
     <div class="chatbot">
-        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f916.svg" alt="AI Bot"
+        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/26a1.svg" alt="AI Bot"
             style="width: 35px; height: 35px; animation: bounce 2s infinite;">
     </div>
 
@@ -1189,7 +1330,7 @@
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.section-title, .timeline-item, .project-card, .tech-item, .roadmap-content').forEach(el => {
+        document.querySelectorAll('.section-title, .timeline-item, .project-card, .tech-category, .roadmap-content').forEach(el => {
             observer.observe(el);
         });
 
@@ -1200,6 +1341,10 @@
 
         // Stagger animation for tech items
         document.querySelectorAll('.tech-item').forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        document.querySelectorAll('.tech-category').forEach((item, index) => {
             item.style.transitionDelay = `${index * 0.1}s`;
         });
 
@@ -1262,7 +1407,7 @@
             const notification = document.createElement('div');
             notification.innerHTML = `
         <div style="display: flex; align-items: center; gap: 1rem;">
-            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f916.svg" style="width: 30px; height: 30px;">
+            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/26a1.svg" style="width: 30px; height: 30px;">
             <div>
                 <div style="font-weight: 600; margin-bottom: 0.5rem;">AI Assistant</div>
                 <div>${randomQuote}</div>
