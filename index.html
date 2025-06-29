@@ -204,17 +204,24 @@
         }
 
         /* About Section */
-        .about-content {
+         .about-content {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 50px;
         }
 
-        .about-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #515154;
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #1d1d1f;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #86868b;
+            margin-bottom: 20px;
         }
 
         .timeline {
@@ -231,13 +238,13 @@
             width: 2px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-
+        
         .timeline-item {
             position: relative;
-            margin-bottom: 2rem;
-            padding-left: 2rem;
-            opacity: 0;
-            transform: translateX(-30px);
+            margin-bottom: 40px;
+            background: #f5f5f7;
+            padding: 25px;
+            border-radius: 15px;
         }
 
         .timeline-item.visible {
@@ -245,17 +252,30 @@
             transform: translateX(0);
             transition: all 0.6s ease;
         }
-
+        
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -2rem;
-            top: 0.5rem;
+            left: -37px;
+            top: 25px;
             width: 12px;
             height: 12px;
-            background: #667eea;
+            background: #007aff;
             border-radius: 50%;
-            transform: translateX(-5px);
+            border: 3px solid white;
+        }
+        
+        .timeline-date {
+            color: #007aff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1d1d1f;
         }
 
         .timeline-year {
@@ -264,14 +284,30 @@
             font-size: 0.9rem;
         }
 
-        .timeline-title {
-            font-weight: 600;
-            margin: 0.5rem 0;
-        }
-
         .timeline-desc {
             color: #86868b;
             font-size: 0.95rem;
+        }
+        
+        .skills {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .skills-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .skill-tag {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            margin: 2px 4px 2px 0;
         }
 
         /* Projects Section */
@@ -996,39 +1032,39 @@
 
     <!-- About Section -->
     <section id="about" class="section">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>I'm a passionate Power BI Developer with 5+ years of experience in transforming complex data into
-                    compelling visual stories. I specialize in creating intelligent dashboards that integrate generative
-                    AI capabilities, enabling businesses to make data-driven decisions with unprecedented clarity.</p>
-                <p>My expertise spans across the entire Microsoft ecosystem, from data modeling and DAX optimization to
-                    advanced analytics and AI integration.</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">2024 - Present</div>
-                    <div class="timeline-title">Senior Power BI Developer</div>
-                    <div class="timeline-desc">Leading AI-powered analytics initiatives and mentoring junior developers
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>My Story</h2>
+                    <p>With over 4 years of experience in data analysis and business intelligence, I specialize in
+                        creating compelling Power BI dashboards that drive business decisions.</p>
+                    <p>I'm passionate about transforming raw data into meaningful visualizations that tell a story and
+                        provide actionable insights. My expertise spans across various industries including finance,
+                        healthcare, and retail.</p>
+                    <p>When I'm not crafting dashboards, I enjoy staying up-to-date with the latest BI trends,
+                        contributing to the Power BI community.</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 - Present</div>
+                        <div class="timeline-title">Power BI Developer</div>
+                        <div class="timeline-desc">Leading BI initiatives and developing enterprise-level dashboards for
+                            Fortune 500 clients. Mentoring junior developers and establishing best practices.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021 - 2023</div>
+                        <div class="timeline-title">Business Intelligence Analyst</div>
+                        <div class="timeline-desc">Designed and implemented comprehensive reporting solutions.
+                            Collaborated with stakeholders to understand business requirements and translate them into
+                            technical solutions.</div>
+                    </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2022 - 2024</div>
-                    <div class="timeline-title">Power BI Developer</div>
-                    <div class="timeline-desc">Developed 50+ enterprise dashboards serving 1000+ users daily</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2020 - 2022</div>
-                    <div class="timeline-title">Data Analyst</div>
-                    <div class="timeline-desc">Started journey in data visualization and business intelligence</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2019</div>
-                    <div class="timeline-title">Computer Science Graduate</div>
-                    <div class="timeline-desc">Bachelor's degree with focus on data science and analytics</div>
-                </div>
             </div>
-        </div>
     </section>
 
     <!-- Projects Section -->
