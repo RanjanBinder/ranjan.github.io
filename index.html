@@ -1,1827 +1,1018 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranjan - Power BI Developer</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>Smuruti Ranjan Swain - Business Intelligence Analyst</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', 'Figtree', sans-serif;
+            background-color: #f0f2f5;
             color: #1d1d1f;
-            background: #fafafa;
-            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-
-        /* Navigation */
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 0.8rem 2rem;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            z-index: 1000;
+        .btn-primary {
+            background: linear-gradient(45deg, #0078d4, #00bcf2);
+            color: #ffffff;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 120, 212, 0.3);
         }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .profile-img {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 2px 10px rgba(0, 122, 255, 0.2);
-        }
-
-        .brand-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1d1d1f;
-        }
-
-        .nav-center {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 0.6rem 2rem;
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .nav-center a {
-            text-decoration: none;
-            color: #1d1d1f;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        .nav-center a:hover {
-            color: #007AFF;
-        }
-
-        .nav-center a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #007AFF;
-            transition: width 0.3s ease;
-        }
-
-        .nav-center a:hover::after {
-            width: 100%;
-        }
-
-        .cv-btn {
-            background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
-        }
-
-        .cv-btn:hover {
-            background: linear-gradient(135deg, #0056b3 0%, #003d99 100%);
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 120, 212, 0.4);
         }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, #fafafa 0%, #f0f2f5 100%);
-            padding: 2rem;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease 0.5s forwards;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #1d1d1f 0%, #667eea 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #86868b;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #667eea;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
+        .btn-secondary {
+            background-color: #ffffff;
+            color: #0078d4;
+            border: 2px solid #0078d4;
             transition: all 0.3s ease;
         }
-
-        .hero-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        .btn-secondary:hover {
+            background-color: #0078d4;
+            color: #ffffff;
+            transform: translateY(-2px);
         }
-
-        /* Sections */
-        .section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .section-title.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.8s ease;
-        }
-
-        /* About Section */
-         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-            margin-top: 50px;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: #1d1d1f;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: #86868b;
-            margin-bottom: 20px;
-        }
-
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            background: #f5f5f7;
-            padding: 25px;
-            border-radius: 15px;
-        }
-
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateX(0);
-            transition: all 0.6s ease;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -37px;
-            top: 25px;
-            width: 12px;
-            height: 12px;
-            background: #007aff;
-            border-radius: 50%;
-            border: 3px solid white;
-        }
-        
-        .timeline-date {
-            color: #007aff;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .timeline-title {
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #1d1d1f;
-        }
-
-        .timeline-year {
-            font-weight: 600;
-            color: #667eea;
-            font-size: 0.9rem;
-        }
-
-        .timeline-desc {
-            color: #86868b;
-            font-size: 0.95rem;
-        }
-        
-        .skills {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-        .skills-label {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-        }
-        .skill-tag {
-            display: inline-block;
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            font-weight: 500;
-            margin: 2px 4px 2px 0;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-thumbnail {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .btn-gemini {
+            background: linear-gradient(45deg, #8e44ad, #9b59b6);
             color: white;
-            font-size: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-thumbnail::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
-        }
-
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-desc {
-            color: #86868b;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .tag.released {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .tag.upcoming {
-            background: #f8f9fa;
-            color: #6c757d;
-        }
-
-        .tag.tech {
-            background: #e7f3ff;
-            color: #0066cc;
-        }
-
-        /* Roadmap Section */
-        .roadmap {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f172a 100%);
-            border-radius: 30px;
-            padding: 4rem 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 20px 60px rgba(26, 26, 46, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .roadmap::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.4;
-        }
-
-        .roadmap h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-            z-index: 2;
-            font-size: 2rem;
-            letter-spacing: 2px;
-        }
-
-        .roadmap-timeline-container {
-            position: relative;
-            z-index: 2;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .roadmap-timeline-track {
-            position: absolute;
-            top: 60px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #ef4444 0%, #f97316 25%, #eab308 50%, #22c55e 100%);
-            border-radius: 2px;
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
-        }
-
-        .roadmap-stages {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            position: relative;
-        }
-
-        .roadmap-stage {
-            flex: 1;
-            text-align: center;
-            position: relative;
-            opacity: 0.7;
-            transition: all 0.4s ease;
-        }
-
-        .roadmap-stage.active {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        .stage-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin: 0 auto 1.5rem;
-            position: relative;
-            z-index: 3;
-            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
-            border: 3px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .roadmap-stage:nth-child(2) .stage-circle {
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
-        }
-
-        .roadmap-stage:nth-child(3) .stage-circle {
-            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
-            box-shadow: 0 8px 25px rgba(234, 179, 8, 0.4);
-        }
-
-        .roadmap-stage:nth-child(4) .stage-circle {
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
-        }
-
-        .stage-content {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            padding: 2rem 1.5rem;
-            color: white;
-            transition: all 0.4s ease;
-            min-height: 280px;
-        }
-
-        .roadmap-stage:hover .stage-content {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        .stage-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .stage-title {
-            background: rgba(239, 68, 68, 0.2);
-            color: #fca5a5;
-            padding: 0.3rem 0.8rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-        }
-
-        .roadmap-stage:nth-child(2) .stage-title {
-            background: rgba(249, 115, 22, 0.2);
-            color: #fed7aa;
-            border-color: rgba(249, 115, 22, 0.3);
-        }
-
-        .roadmap-stage:nth-child(3) .stage-title {
-            background: rgba(234, 179, 8, 0.2);
-            color: #fef3c7;
-            border-color: rgba(234, 179, 8, 0.3);
-        }
-
-        .roadmap-stage:nth-child(4) .stage-title {
-            background: rgba(34, 197, 94, 0.2);
-            color: #bbf7d0;
-            border-color: rgba(34, 197, 94, 0.3);
-        }
-
-        .stage-period {
-            font-size: 0.85rem;
-            color: #9ca3af;
-            font-weight: 500;
-        }
-
-        .stage-content h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, #d1d5db 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stage-description {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #d1d5db;
-            text-align: left;
-        }
-
-        .roadmap-navigation {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 3rem;
-        }
-
-        .nav-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
+            border: none;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
         }
-
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
+        .btn-gemini:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(142, 68, 173, 0.4);
         }
-
-        /* Mobile Responsive for Roadmap */
-        @media (max-width: 768px) {
-            .roadmap-stages {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .roadmap-timeline-track {
-                display: none;
-            }
-
-            .stage-content {
-                min-height: auto;
-            }
-
-            .roadmap h2 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Technology Section */
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #86868b;
-            margin-bottom: 4rem;
-            font-weight: 400;
-        }
-
-        .tech-categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .tech-category {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .tech-item {
-            background: white;
-            padding: 2rem 1rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
+        .fade-in {
             opacity: 0;
             transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
-        .tech-category.visible {
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        .tech-category:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        html {
+            scroll-behavior: smooth;
         }
-
-        .tech-category-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: white;
-            font-size: 2rem;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(120deg, #f0f9ff 0%, #e6f7ff 100%);
+            z-index: -1;
+            overflow: hidden;
         }
-
-        .tech-category-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .tech-category-items {
-            font-size: 0.95rem;
-            color: #86868b;
-            line-height: 1.6;
-            font-weight: 400;
-            letter-spacing: 0.3px;
-        }
-
-        /* Mobile responsive for tech categories */
-        @media (max-width: 768px) {
-            .tech-categories-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .tech-category {
-                padding: 2rem 1.5rem;
-            }
-
-            .tech-category-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 1.8rem;
-            }
-
-            .tech-category-title {
-                font-size: 1.2rem;
-            }
-        }
-
-        /* Update stagger animation for new tech categories */
-        .tech-category:nth-child(1) {
-            transition-delay: 0.1s;
-        }
-
-        .tech-category:nth-child(2) {
-            transition-delay: 0.2s;
-        }
-
-        .tech-category:nth-child(3) {
-            transition-delay: 0.3s;
-        }
-
-        .tech-category:nth-child(4) {
-            transition-delay: 0.4s;
-        }
-
-        .tech-category:nth-child(5) {
-            transition-delay: 0.5s;
-        }
-
-        .tech-category:nth-child(6) {
-            transition-delay: 0.6s;
-        }
-
-        .tech-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .tech-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .tech-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-
-        .tech-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        /* Contact Section */
-        
-        .contact {
-            background: white;
-            border-radius: 30px;
-            padding: 3rem;
-            text-align: center;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 1rem;
-            border-radius: 12px;
-        }
-        
-        .contact-item:hover {
-            transform: translateY(-5px);
-            background-color: #f8f9ff;
-        }
-        
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: #667eea;
+        .hero-bg::before, .hero-bg::after {
+            content: '';
+            position: absolute;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
+            filter: blur(80px);
+            opacity: 0.5;
+        }
+        .hero-bg::before {
+            width: 400px;
+            height: 400px;
+            background: #00bcf2;
+            top: -100px;
+            left: -150px;
+        }
+        .hero-bg::after {
+            width: 300px;
+            height: 300px;
+            background: #7fba00;
+            bottom: -100px;
+            right: -100px;
         }
         
-        .contact-item:hover .contact-icon {
-            background: #4c63d2;
-            transform: scale(1.1);
-        }
-        
-        .contact-label {
-            font-size: 1.1rem;
-            color: #1d1d1f;
-            font-weight: 500;
-            margin: 0;
-        }
-
-        /* Chatbot */
-        .chatbot {
+        /* Chatbot Styles */
+        .chatbot-fab {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            width: 60px;
-            height: 60px;
-            background: #667eea;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-            overflow: hidden;
+            z-index: 1000;
+            transition: transform 0.3s ease;
         }
-
-        .chatbot:hover {
+        .chatbot-fab:hover {
             transform: scale(1.1);
         }
-
-        /* Footer */
-        .footer {
-            background: #1d1d1f;
-            color: white;
-            padding: 2rem 0;
-            margin-top: auto;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 0 2rem;
-        }
-        
-        .social-links {
+        .chatbot-window {
+            position: fixed;
+            bottom: 7rem;
+            right: 2rem;
+            width: 370px;
+            height: 500px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(20px);
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         }
-        
-        .social-links a {
+        .chatbot-window.visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+        .chatbot-header {
+            background: linear-gradient(45deg, #0078d4, #00bcf2);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .chat-message {
+            padding: 0.75rem 1rem;
+            border-radius: 18px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+        .bot-message {
+            background-color: #f0f2f5;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .user-message {
+            background-color: #0078d4;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chatbot-input {
+            border-top: 1px solid #e5e5e5;
+            padding: 0.75rem;
+            display: flex;
+        }
+        .chatbot-input input {
+            flex-grow: 1;
+            border: 1px solid #d1d1d1;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .chatbot-input input:focus {
+            border-color: #0078d4;
+        }
+        .chatbot-input button {
+            background: none;
+            border: none;
+            color: #0078d4;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            transition: color 0.2s;
+        }
+        .chatbot-input button:hover {
+            color: #005a9e;
+        }
+        .typing-indicator {
+            align-self: flex-start;
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: #333;
+            gap: 4px;
+        }
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background-color: #ccc;
             border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+            animation: typing 1s infinite;
         }
-        
-        .social-links a:hover {
-            background: #667eea;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
         }
-        
-        .social-links a.linkedin:hover {
-            background: #0077b5;
+
+        /* Skill Bar Styles */
+        .skill-bar-container {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: 9999px;
+            height: 1rem;
+            overflow: hidden;
         }
-        
-        .social-links a.github:hover {
-            background: #333;
+        .skill-bar {
+            background: linear-gradient(90deg, #0078d4, #00bcf2);
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.8s ease-in-out;
         }
-        
-        .social-links a.twitter:hover {
-            background: #1da1f2;
+        .project-tag {
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
         }
-        
-        .footer-stats {
+        /* Project Card Styles */
+        .project-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
+            flex-direction: column;
+            overflow: hidden;
         }
-        
-        .stat {
-            text-align: center;
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #667eea;
+        .project-tech-tag {
+            background-color: #ffffff;
+            color: #3b82f6;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            border: 1px solid #dbeafe;
+        }
+        .project-features li {
+            position: relative;
+            padding-left: 1.5rem;
             margin-bottom: 0.5rem;
         }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: #86868b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .project-features li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #34d399;
         }
-        
-
-        /* Animations */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.7;
-            }
+        .project-impact {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #f3f4f6;
+            font-weight: 600;
+            color: #16a34a;
         }
 
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-10px);
-            }
-
-            60% {
-                transform: translateY(-5px);
-            }
+        /* New Roadmap Styles */
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr auto 1fr;
+            gap: 1rem 2rem;
+            align-items: center;
+            position: relative;
         }
-
-        @keyframes slideInUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        .roadmap-timeline-bar {
+            grid-column: 1 / -1;
+            grid-row: 2;
+            height: 6px;
+            background: linear-gradient(90deg, #dbeafe, #60a5fa, #2563eb);
+            border-radius: 3px;
         }
+        .roadmap-milestone {
+            grid-row: 2;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .roadmap-milestone-dot {
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border: 5px solid #3b82f6;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .roadmap-milestone-title {
+            position: absolute;
+            bottom: 25px;
+            font-weight: 600;
+            color: #3b82f6;
+            white-space: nowrap;
+        }
+        .roadmap-skill-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            position: relative;
+        }
+        .roadmap-skill-stack.top {
+            grid-row: 1;
+            justify-content: flex-end;
+            padding-bottom: 2rem;
+        }
+        .roadmap-skill-stack.bottom {
+            grid-row: 3;
+            padding-top: 2rem;
+        }
+        .roadmap-skill-stack::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            background-color: #cbd5e1;
+            z-index: 0;
+        }
+        .roadmap-skill-stack.top::after {
+            height: 2rem;
+            bottom: 0;
+        }
+        .roadmap-skill-stack.bottom::after {
+            height: 2rem;
+            top: 0;
+        }
+        .roadmap-skill-item {
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .cat-data-prep { background-color: #fef2f2; border-color: #fecaca; color: #991b1b; } /* Red */
+        .cat-modeling { background-color: #fffbeb; border-color: #fde68a; color: #92400e; } /* Yellow */
+        .cat-viz { background-color: #ecfdf5; border-color: #a7f3d0; color: #065f46; } /* Green */
+        .cat-advanced { background-color: #eff6ff; border-color: #bfdbfe; color: #1e40af; } /* Blue */
+        .cat-deploy { background-color: #f5f3ff; border-color: #ddd6fe; color: #5b21b6; } /* Purple */
+        .roadmap-milestone-wrapper { display: none; }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-center {
-                display: none;
-            }
-
-            .nav-container {
-                justify-content: space-between;
-            }
-
-            .cv-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
-            }
-
-            .brand-name {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .contact {
-                padding: 2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .footer-stats {
-                gap: 2rem;
-            }
-            
-            .stat-number {
-                font-size: 1.5rem;
-            }
-            
-            .social-links {
-                gap: 1rem;
-            }
-            
-            .social-links a {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
+        @media (max-width: 1024px) {
             .roadmap-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
+                display: flex;
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 2rem;
+            }
+            .roadmap-timeline-bar, .roadmap-milestone, .roadmap-skill-stack::after {
+                display: none;
+            }
+            .roadmap-skill-stack {
+                padding: 0;
+                align-items: stretch;
+            }
+            .roadmap-milestone-wrapper {
+                display: block;
+                text-align: center;
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: #3b82f6;
+                margin-bottom: 1rem;
+                border-bottom: 2px solid #dbeafe;
+                padding-bottom: 0.5rem;
             }
         }
     </style>
 </head>
+<body class="overflow-x-hidden">
 
-<body>
-    <!-- Navigation -->
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <div class="profile-img">
-                    <img src="profile_pic.jpg" alt="" class="profile-img" id="profileImage">
-                </div>
-                <span class="brand-name">Ranjan</span>
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200/80">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-gray-800">Smuruti Ranjan Swain</a>
+            <div class="hidden md:flex items-center space-x-8 text-sm text-gray-600">
+                <a href="#experience" class="hover:text-blue-600 transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-blue-600 transition-colors">Projects</a>
+                <a href="#roadmap" class="hover:text-blue-600 transition-colors">Roadmap</a>
+                <a href="#skills" class="hover:text-blue-600 transition-colors">Skills</a>
+                <a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a>
+                <a href="Ranjan_CV.pdf" download class="btn-primary font-semibold px-5 py-2 rounded-full text-xs">Download CV</a>
             </div>
-            <ul class="nav-center">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-                <li><a href="#technology">Technology</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="#" class="cv-btn">Download CV</a>
-        </div>
-    </nav>
+             <a href="Ranjan_CV.pdf" download class="md:hidden btn-primary font-semibold px-4 py-2 rounded-full text-xs">Download CV</a>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Power BI Developer</h1>
-            <p>Nobody understands business intelligence like I do. I take raw, boring data — and I make it
-                beautiful, believe me. Incredible visuals, top-tier analytics, and storytelling like you've never
-                seen. Power BI? I’ve mastered it. DAX? I write it like poetry.</p>
-            <p>And now with Generative AI? I’ve got a chatbot that’s smarter than most consultants. Always learning,
-                always improving. If you want insights that win — I’m
-                your guy.</p>
-            <a href="#projects" class="hero-cta">
-                <i class="fas fa-chart-line"></i>
-                View My Work
-            </a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>My Story</h2>
-                    <p>With over 4 years of experience in data analysis and business intelligence, I specialize in
-                        creating compelling Power BI dashboards that drive business decisions.</p>
-                    <p>I'm passionate about transforming raw data into meaningful visualizations that tell a story and
-                        provide actionable insights. My expertise spans across various industries including finance,
-                        healthcare, and retail.</p>
-                    <p>When I'm not crafting dashboards, I enjoy staying up-to-date with the latest BI trends,
-                        contributing to the Power BI community.</p>
-                </div>
-
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023 - Present</div>
-                        <div class="timeline-title">Power BI Developer</div>
-                        <div class="timeline-desc">Leading BI initiatives and developing enterprise-level dashboards for
-                            Fortune 500 clients. Mentoring junior developers and establishing best practices.</div>
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="hero" class="relative pt-24 pb-32">
+            <div class="hero-bg"></div>
+            <div class="container mx-auto px-6 fade-in relative z-10">
+                <div class="flex flex-col md:flex-row items-center">
+                    <!-- Profile Picture -->
+                    <div class="md:mr-12 mb-8 md:mb-0 flex-shrink-0">
+                        <img src="https://placehold.co/200x200/0078D4/FFFFFF?text=SRS&font=segoe-ui" alt="Smuruti Ranjan Swain Profile Picture" class="rounded-full w-40 h-40 md:w-48 md:h-48 object-cover border-4 border-white shadow-lg">
                     </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">2021 - 2023</div>
-                        <div class="timeline-title">Business Intelligence Analyst</div>
-                        <div class="timeline-desc">Designed and implemented comprehensive reporting solutions.
-                            Collaborated with stakeholders to understand business requirements and translate them into
-                            technical solutions.</div>
-                    </div>
+                    <!-- Hero Text -->
+                    <div class="max-w-2xl text-center md:text-left">
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                           Seeking a Challenging BI Analyst Role
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-700 mb-8">
+                           Actively seeking opportunities to leverage my expertise in Power BI, SQL, and Python to help a data-driven organization achieve its goals. Ready to contribute from day one.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                            <a href="#projects" class="btn-primary font-semibold px-8 py-3 rounded-full text-center">View My Work</a>
+                            <a href="#contact" class="btn-secondary font-semibold px-8 py-3 rounded-full text-center">Get In Touch</a>
+                        </div>
                     </div>
                 </div>
             </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-thumbnail">
-                    <i class="fas fa-robot"></i>
+        <!-- Why Hire Me Section -->
+        <section id="why-hire-me" class="py-24">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Why Hire Me?</h2>
                 </div>
-                <div class="project-info">
-                    <h3 class="project-title">AI Sales Insights Dashboard</h3>
-                    <p class="project-desc">Intelligent sales analytics with predictive forecasting and AI-powered
-                        recommendations for strategic decision making.</p>
-                    <div class="project-tags">
-                        <span class="tag released">Released</span>
-                        <span class="tag tech">Gen AI</span>
-                        <span class="tag tech">Power BI</span>
-                        <span class="tag tech">Azure</span>
+                <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                    <div class="bg-white p-8 rounded-xl shadow-md text-center fade-in">
+                        <div class="text-blue-500 mb-4"><i class="fas fa-chart-pie fa-3x"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Data Transformer</h3>
+                        <p class="text-gray-600">I excel at turning complex, raw data into beautiful, intuitive, and actionable insights using Power BI, advanced DAX, and thoughtful UX design.</p>
+                    </div>
+                     <div class="bg-white p-8 rounded-xl shadow-md text-center fade-in" style="transition-delay: 100ms;">
+                        <div class="text-green-500 mb-4"><i class="fas fa-code fa-3x"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Technical Excellence</h3>
+                        <p class="text-gray-600">With expert-level SQL skills and proficiency in Python and Azure, I build robust, scalable, and efficient data models and ETL pipelines.</p>
+                    </div>
+                     <div class="bg-white p-8 rounded-xl shadow-md text-center fade-in" style="transition-delay: 200ms;">
+                        <div class="text-yellow-500 mb-4"><i class="fas fa-bullseye fa-3x"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Business Impact</h3>
+                        <p class="text-gray-600">My solutions are not just technical; they drive real business value. I've enabled over $655M in cost avoidance and cut manual processing by 70%.</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="project-card">
-                <div class="project-thumbnail">
-                    <i class="fas fa-comments"></i>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Chatbot Usage Analytics</h3>
-                    <p class="project-desc">Real-time monitoring dashboard for AI chatbot performance metrics, user
-                        engagement, and conversation insights.</p>
-                    <div class="project-tags">
-                        <span class="tag released">Released</span>
-                        <span class="tag tech">Power BI</span>
-                        <span class="tag tech">Python</span>
-                        <span class="tag tech">AI Analytics</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-thumbnail">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div class="project-info">
-                    <h3 class="project-title">Predictive Analytics Suite</h3>
-                    <p class="project-desc">Advanced machine learning models integrated with Power BI for demand
-                        forecasting and trend analysis.</p>
-                    <div class="project-tags">
-                        <span class="tag upcoming">Upcoming</span>
-                        <span class="tag tech">ML</span>
-                        <span class="tag tech">Power BI</span>
-                        <span class="tag tech">Azure ML</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Roadmap Section -->
-    <section id="roadmap" class="section">
-        <div class="roadmap">
-            <h2 class="section-title">DEVELOPMENT ROADMAP</h2>
-            <div class="roadmap-timeline-container">
-                <div class="roadmap-timeline-track"></div>
-                <div class="roadmap-stages">
-                    <div class="roadmap-stage active">
-                        <div class="stage-circle">1</div>
-                        <div class="stage-content">
-                            <div class="stage-header">
-                                <span class="stage-title">Current Stage</span>
-                                <span class="stage-period">Q2 2025</span>
+        <!-- Work Experience Section -->
+        <section id="experience" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-center text-3xl font-bold text-gray-800 mb-12 fade-in">Work Experience</h2>
+                <div class="max-w-3xl mx-auto space-y-12">
+                     <!-- Vassar Digital -->
+                    <div class="fade-in">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-1/4 text-right">
+                                <h3 class="font-semibold text-gray-900">Vassardigital.ai</h3>
+                                <p class="text-sm text-gray-500">Jan 2023 - Present</p>
                             </div>
-                            <h3>MAY 2025</h3>
-                            <div class="stage-description">
-                                Power BI Dashboard Development - Core platform development begins. Advanced analytics
-                                implementation and AI integration planning.
+                            <div class="w-3/4">
+                                <h4 class="font-medium text-lg text-gray-900">Business Intelligence Analyst</h4>
+                                <ul class="list-disc list-outside mt-2 text-gray-600 space-y-2 pl-4">
+                                    <li>Enabled $655.3M in cost avoidance by designing self-service Power BI procurement dashboards.</li>
+                                    <li>Designed and maintained BI solutions handling 200M+ records using Power BI, DAX, SQL Server, and SSAS.</li>
+                                    <li>Built optimized star schema data models and implemented incremental refresh and RLS for security and efficiency.</li>
+                                    <li>Developed Python scripts for data automation, reducing manual processing time by 70%.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-
-                    <div class="roadmap-stage">
-                        <div class="stage-circle">2</div>
-                        <div class="stage-content">
-                            <div class="stage-header">
-                                <span class="stage-title">3 Months</span>
-                                <span class="stage-period">Q3 2025</span>
+                    <!-- Vassar Labs -->
+                    <div class="fade-in">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-1/4 text-right">
+                                <h3 class="font-semibold text-gray-900">Vassar labs</h3>
+                                <p class="text-sm text-gray-500">Jun 2021 - Dec 2022</p>
                             </div>
-                            <h3>MAY - AUGUST 2025</h3>
-                            <div class="stage-description">
-                                AI Integration Phase - Implement machine learning models and natural language processing
-                                capabilities for enhanced data insights.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="roadmap-stage">
-                        <div class="stage-circle">3</div>
-                        <div class="stage-content">
-                            <div class="stage-header">
-                                <span class="stage-title">6 Months</span>
-                                <span class="stage-period">Q4 2025</span>
-                            </div>
-                            <h3>AUGUST - NOVEMBER 2025</h3>
-                            <div class="stage-description">
-                                Advanced Analytics Rollout - Deploy predictive analytics, real-time streaming, and
-                                automated reporting systems across enterprise.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="roadmap-stage">
-                        <div class="stage-circle">4</div>
-                        <div class="stage-content">
-                            <div class="stage-header">
-                                <span class="stage-title">12 Months</span>
-                                <span class="stage-period">Q1 2026</span>
-                            </div>
-                            <h3>NOVEMBER 2025 - FEBRUARY 2026</h3>
-                            <div class="stage-description">
-                                Global Platform Launch - Full-scale deployment with cross-platform integration, AI
-                                copilot features, and comprehensive analytics suite.
+                            <div class="w-3/4">
+                                <h4 class="font-medium text-lg text-gray-900">IT Business Analyst</h4>
+                                <ul class="list-disc list-outside mt-2 text-gray-600 space-y-2 pl-4">
+                                    <li>Collaborated with stakeholders to gather requirements for an AI-powered procurement optimization project.</li>
+                                    <li>Managed Agile delivery lifecycle in JIRA, including sprint planning and backlog grooming.</li>
+                                    <li>Used Power BI and data storytelling techniques to drive insights and enable data-driven decision making.</li>
+                                    <li>Led User Acceptance Testing (UAT) to ensure delivery met business intent and compliance needs.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="roadmap-navigation">
-                    <button class="nav-btn prev-btn">←</button>
-                    <button class="nav-btn next-btn">→</button>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects" class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-blue-600 mb-4 fade-in">PROJECTS</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto fade-in">Showcasing advanced Power BI solutions that have delivered measurable business impact across various industries and use cases.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                    <!-- Project Card 1 -->
+                    <div class="project-card fade-in">
+                        <img src="https://images.unsplash.com/photo-1630514933684-575806916806?q=80&w=1200&auto=format&fit=crop" alt="Executive Dashboard" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/3b82f6/ffffff?text=Executive+Dashboard';">
+                        <div class="p-6 flex-grow flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-bold text-gray-800">Executive Dashboard</h3>
+                                <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                            <p class="text-gray-600 mb-6">Comprehensive executive-level dashboard providing real-time KPI monitoring with drill-down capabilities across multiple business units and 13 manufacturing sites.</p>
+                            
+                            <h4 class="font-semibold text-gray-700 mb-3">TECHNOLOGIES</h4>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="project-tech-tag">Power BI</span>
+                                <span class="project-tech-tag">DAX</span>
+                                <span class="project-tech-tag">Azure SQL</span>
+                                <span class="project-tech-tag">Power Query</span>
+                            </div>
 
-    <!-- Technology Section -->
-    <section id="technology" class="section">
-        <h2 class="section-title">Technology Stack</h2>
-        <p class="section-subtitle">Tools and technologies I use to create powerful data solutions</p>
-
-        <div class="tech-categories-grid">
-            <!-- Business Intelligence -->
-            <div class="tech-category">
-                <div class="tech-category-icon">
-                    <i class="fas fa-chart-bar"></i>
-                </div>
-                <h3 class="tech-category-title">Business Intelligence</h3>
-                <div class="tech-category-items">
-                    Power BI • Tableau • QlikView • SSRS • Power Pivot
-                </div>
-            </div>
-
-            <!-- Databases & Query Languages -->
-            <div class="tech-category">
-                <div class="tech-category-icon">
-                    <i class="fas fa-database"></i>
-                </div>
-                <h3 class="tech-category-title">Databases & Query Languages</h3>
-                <div class="tech-category-items">
-                    SQL Server • MySQL • PostgreSQL • Oracle • DAX • M Query
-                </div>
-            </div>
-
-            <!-- Data Analysis -->
-            <div class="tech-category">
-                <div class="tech-category-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h3 class="tech-category-title">Data Analysis</h3>
-                <div class="tech-category-items">
-                    Excel • Python • R • Power Query • Statistical Analysis
-                </div>
-            </div>
-
-            <!-- Cloud Platforms -->
-            <div class="tech-category">
-                <div class="tech-category-icon">
-                    <i class="fas fa-cloud"></i>
-                </div>
-                <h3 class="tech-category-title">Cloud Platforms</h3>
-                <div class="tech-category-items">
-                    Azure • AWS • Power Platform • SharePoint • Office 365
-                </div>
-            </div>
-
-            <!-- Tools & Others -->
-            <div class="tech-category">
-                <div class="tech-category-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <h3 class="tech-category-title">Tools & Others</h3>
-                <div class="tech-category-items">
-                    SSIS • Azure Data Factory • Git • Jupyter • VS Code
-                </div>
-            </div>
-
-            <!-- Methodologies -->
-            <div class="tech-category">
-                <div class="tech-category-icon">
-                    <i class="fas fa-project-diagram"></i>
-                </div>
-                <h3 class="tech-category-title">Methodologies</h3>
-                <div class="tech-category-items">
-                    Agile • Scrum • Data Modeling • ETL • Data Warehousing
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="contact">
-            <h2 class="section-title">Let's Connect</h2>
-            <p style="font-size: 1.2rem; color: #86868b; margin-bottom: 2rem;">Ready to transform your data into powerful insights?</p>
-            <div class="contact-info">
-                <a href="mailto:smrutiranjan.swain@hotmail.com" class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
+                            <h4 class="font-semibold text-gray-700 mb-3">KEY FEATURES</h4>
+                            <ul class="text-gray-600 grid grid-cols-1 sm:grid-cols-2 gap-x-4 project-features mb-6">
+                                <li>Real-time data</li>
+                                <li>Role-based security</li>
+                                <li>Mobile responsive</li>
+                                <li>Automated refresh</li>
+                            </ul>
+                            
+                            <p class="project-impact">IMPACT: Enabled $655.3M in cost avoidance</p>
+                        </div>
                     </div>
-                    <p class="contact-label">Email</p>
-                </a>
-                
-                <a href="https://www.linkedin.com/in/ranjan-bi/" target="_blank" rel="noopener noreferrer" class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fab fa-linkedin-in"></i>
-                    </div>
-                    <p class="contact-label">LinkedIn</p>
-                </a>
-                
-                <a href="https://github.com/RanjanBinder" target="_blank" rel="noopener noreferrer" class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <p class="contact-label">GitHub</p>
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Chatbot -->
-    <div class="chatbot">
-        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/26a1.svg" alt="AI Bot"
-            style="width: 35px; height: 35px; animation: bounce 2s infinite;">
-    </div>
+                    <!-- Project Card 2 -->
+                    <div class="project-card fade-in" style="transition-delay: 100ms;">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Enterprise Data Platform" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/10b981/ffffff?text=Data+Platform';">
+                        <div class="p-6 flex-grow flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-bold text-gray-800">Enterprise Data Platform</h3>
+                                <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                            <p class="text-gray-600 mb-6">Advanced analytics solution with predictive modeling and performance analysis for strategic planning, handling over 200M+ records.</p>
+                            
+                            <h4 class="font-semibold text-gray-700 mb-3">TECHNOLOGIES</h4>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="project-tech-tag">Power BI</span>
+                                <span class="project-tech-tag">Python</span>
+                                <span class="project-tech-tag">Machine Learning</span>
+                                <span class="project-tech-tag">SQL Server</span>
+                            </div>
+
+                            <h4 class="font-semibold text-gray-700 mb-3">KEY FEATURES</h4>
+                            <ul class="text-gray-600 grid grid-cols-1 sm:grid-cols-2 gap-x-4 project-features mb-6">
+                                <li>Predictive analytics</li>
+                                <li>Trend analysis</li>
+                                <li>Data automation</li>
+                                <li>Scalable architecture</li>
+                            </ul>
+                            
+                            <p class="project-impact">IMPACT: 70% reduction in manual data processing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- UPDATED Roadmap Section -->
+        <section id="roadmap" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-blue-600 mb-4 fade-in">POWER BI ROADMAP</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto fade-in">A visual guide to my Power BI development journey, from foundational concepts to advanced deployment and AI integration.</p>
+                </div>
+
+                <div class="roadmap-grid fade-in">
+                    <!-- Timeline Bar -->
+                    <div class="roadmap-timeline-bar"></div>
+
+                    <!-- Milestones -->
+                    <div class="roadmap-milestone" style="grid-column: 1;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">Foundations</div></div></div>
+                    <div class="roadmap-milestone" style="grid-column: 2;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">Core Development</div></div></div>
+                    <div class="roadmap-milestone" style="grid-column: 3;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">Advanced Techniques</div></div></div>
+                    <div class="roadmap-milestone" style="grid-column: 4;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">Enterprise & AI</div></div></div>
+
+                    <!-- Skills Stacks -->
+                    <!-- Column 1 -->
+                    <div class="roadmap-skill-stack top" style="grid-column: 1;">
+                        <div class="roadmap-milestone-wrapper">Foundations</div>
+                        <div class="roadmap-skill-item cat-data-prep">Power Query (M)</div>
+                    </div>
+                    <div class="roadmap-skill-stack bottom" style="grid-column: 1;">
+                        <div class="roadmap-skill-item cat-modeling">Data Modeling</div>
+                        <div class="roadmap-skill-item cat-modeling">Star Schema</div>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div class="roadmap-skill-stack top" style="grid-column: 2;">
+                        <div class="roadmap-milestone-wrapper">Core Development</div>
+                        <div class="roadmap-skill-item cat-modeling">Advanced DAX</div>
+                        <div class="roadmap-skill-item cat-modeling">Time Intelligence</div>
+                    </div>
+                    <div class="roadmap-skill-stack bottom" style="grid-column: 2;">
+                        <div class="roadmap-skill-item cat-viz">Report & UX Design</div>
+                        <div class="roadmap-skill-item cat-viz">Custom Visuals</div>
+                        <div class="roadmap-skill-item cat-data-prep">SQL / API Connectivity</div>
+                    </div>
+
+                    <!-- Column 3 -->
+                    <div class="roadmap-skill-stack top" style="grid-column: 3;">
+                        <div class="roadmap-milestone-wrapper">Advanced Techniques</div>
+                        <div class="roadmap-skill-item cat-advanced">Performance Tuning (DAX Studio)</div>
+                        <div class="roadmap-skill-item cat-advanced">Incremental Refresh</div>
+                    </div>
+                    <div class="roadmap-skill-stack bottom" style="grid-column: 3;">
+                        <div class="roadmap-skill-item cat-deploy">Power BI Service</div>
+                        <div class="roadmap-skill-item cat-deploy">Gateways & Security (RLS)</div>
+                        <div class="roadmap-skill-item cat-advanced">Python/R Integration</div>
+                    </div>
+                    
+                    <!-- Column 4 -->
+                    <div class="roadmap-skill-stack top" style="grid-column: 4;">
+                        <div class="roadmap-milestone-wrapper">Enterprise & AI</div>
+                        <div class="roadmap-skill-item cat-deploy">Microsoft Fabric</div>
+                        <div class="roadmap-skill-item cat-deploy">CI/CD Pipelines</div>
+                    </div>
+                    <div class="roadmap-skill-stack bottom" style="grid-column: 4;">
+                        <div class="roadmap-skill-item cat-advanced">Embedded Analytics</div>
+                        <div class="roadmap-skill-item cat-advanced">AI/ML Integration</div>
+                        <div class="roadmap-skill-item cat-advanced">Streaming Dataflows</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-center text-3xl font-bold text-gray-800 mb-12 fade-in">Core Competencies</h2>
+                <div class="max-w-4xl mx-auto space-y-12">
+                    <!-- BI & Visualization -->
+                    <div class="fade-in">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6 text-blue-600">BI & Visualization</h3>
+                        <div class="space-y-8">
+                            <!-- Skill Item -->
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <p class="font-semibold text-gray-700">Power BI / DAX / Power Query</p>
+                                    <p class="text-sm font-medium text-blue-600">Expert</p>
+                                </div>
+                                <div class="skill-bar-container"><div class="skill-bar" style="width: 0%;" data-width="95%"></div></div>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="project-tag">Executive Dashboard</span>
+                                    <span class="project-tag">Enterprise Data Platform</span>
+                                </div>
+                            </div>
+                            <!-- Skill Item -->
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <p class="font-semibold text-gray-700">Tableau</p>
+                                    <p class="text-sm font-medium text-blue-600">Proficient</p>
+                                </div>
+                                <div class="skill-bar-container"><div class="skill-bar" style="width: 0%;" data-width="75%"></div></div>
+                            </div>
+                            <!-- Skill Item -->
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <p class="font-semibold text-gray-700">SSAS / SSRS / SSIS</p>
+                                    <p class="text-sm font-medium text-blue-600">Advanced</p>
+                                </div>
+                                <div class="skill-bar-container"><div class="skill-bar" style="width: 0%;" data-width="85%"></div></div>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="project-tag">Enterprise Data Platform</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Data & Cloud -->
+                    <div class="fade-in">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6 text-green-600">Data & Cloud</h3>
+                        <div class="space-y-8">
+                            <!-- Skill Item -->
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <p class="font-semibold text-gray-700">SQL / T-SQL</p>
+                                    <p class="text-sm font-medium text-green-600">Expert</p>
+                                </div>
+                                <div class="skill-bar-container"><div class="skill-bar bg-green-500" style="width: 0%; background: linear-gradient(90deg, #10b981, #34d399);" data-width="95%"></div></div>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="project-tag">Executive Dashboard</span>
+                                    <span class="project-tag">Enterprise Data Platform</span>
+                                </div>
+                            </div>
+                             <!-- Skill Item -->
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <p class="font-semibold text-gray-700">Python (Pandas, Scikit-learn)</p>
+                                    <p class="text-sm font-medium text-green-600">Advanced</p>
+                                </div>
+                                <div class="skill-bar-container"><div class="skill-bar bg-green-500" style="width: 0%; background: linear-gradient(90deg, #10b981, #34d399);" data-width="80%"></div></div>
+                                 <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="project-tag">Enterprise Data Platform</span>
+                                </div>
+                            </div>
+                            <!-- Skill Item -->
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <p class="font-semibold text-gray-700">Azure (Synapse, Data Factory) & Microsoft Fabric</p>
+                                    <p class="text-sm font-medium text-green-600">Proficient</p>
+                                </div>
+                                <div class="skill-bar-container"><div class="skill-bar bg-green-500" style="width: 0%; background: linear-gradient(90deg, #10b981, #34d399);" data-width="70%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-blue-600 mb-4 fade-in">CONTACT</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto fade-in">Ready to transform your data into actionable insights? Let's discuss your Power BI project requirements and how we can drive your business forward.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+                    <!-- Contact Form -->
+                    <div class="fade-in">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Send Message</h3>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                                    <input type="text" name="name" id="name" placeholder="Your name" class="w-full px-4 py-3 bg-gray-100 border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-transparent transition">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                    <input type="email" name="email" id="email" placeholder="your.email@company.com" class="w-full px-4 py-3 bg-gray-100 border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-transparent transition">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                                <input type="text" name="subject" id="subject" placeholder="Project inquiry" class="w-full px-4 py-3 bg-gray-100 border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-transparent transition">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea name="message" id="message" rows="5" placeholder="Tell me about your Power BI project requirements..." class="w-full px-4 py-3 bg-gray-100 border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white focus:border-transparent transition"></textarea>
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button type="submit" class="w-full btn-primary font-semibold px-6 py-3 rounded-lg">Send Message</button>
+                                <button type="button" id="gemini-contact-btn" class="w-full btn-gemini font-semibold px-6 py-3 rounded-lg flex items-center justify-center gap-2">
+                                    ✨ Auto-Complete with AI
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Get in Touch -->
+                    <div class="fade-in">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Get In Touch</h3>
+                        <p class="text-gray-600 mb-8">
+                            I specialize in creating custom Power BI solutions that turn complex data into clear, actionable insights. Whether you need dashboard development, data modeling, or Power BI consulting, I'm here to help.
+                        </p>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-full flex-shrink-0"><i class="fas fa-envelope fa-fw"></i></div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Email</h4>
+                                    <a href="mailto:smrutiranjan.swain@hotmail.com" class="text-gray-600 hover:text-blue-600 transition">smrutiranjan.swain@hotmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-full flex-shrink-0"><i class="fas fa-phone fa-fw"></i></div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Phone</h4>
+                                    <span class="text-gray-600">+1 (555) 123-4567</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-blue-100 text-blue-600 p-3 rounded-full flex-shrink-0"><i class="fas fa-map-marker-alt fa-fw"></i></div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Location</h4>
+                                    <span class="text-gray-600">Remote / Available Worldwide</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                             <h4 class="text-lg font-semibold text-gray-800 mb-4">Connect</h4>
+                             <div class="flex items-center space-x-4">
+                                <a href="https://www.linkedin.com/in/ranjan-linkedin" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 transition-transform transform hover:scale-110"><i class="fab fa-linkedin fa-2x"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-gray-900 transition-transform transform hover:scale-110"><i class="fab fa-github fa-2x"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/ranjan-bi/" target="_blank" rel="noopener noreferrer" class="linkedin">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="github">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" class="twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </div>
-            <div class="footer-stats">
-                <div class="stat">
-                    <div class="stat-number" id="viewCount">2,847</div>
-                    <div class="stat-label">Profile Views</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label">Daily Users Served</div>
-                </div>
-            </div>
-            <p style="color: #86868b; margin-top: 1rem;">© <span id="currentYear"></span> Ranjan. All rights reserved.</p>
+    <footer class="bg-gray-800 py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-sm text-gray-400">&copy; 2025 Smuruti Ranjan Swain. Designed with a touch of AI.</p>
         </div>
     </footer>
 
+    <!-- Chatbot -->
+    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f916.svg" alt="Chatbot" id="chatbot-fab" class="chatbot-fab">
+    <div id="chatbot-window" class="chatbot-window">
+        <div class="chatbot-header">
+            <span>✨ AI Assistant</span>
+            <button id="close-chatbot-btn" class="text-xl">&times;</button>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages">
+            <!-- Messages will be injected here -->
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input-field" placeholder="Ask about skills, projects...">
+            <button id="chatbot-send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+
     <script>
-        // Set current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // --- Intersection Observer Setup ---
+        const faders = document.querySelectorAll('.fade-in');
+        const skillBars = document.querySelectorAll('.skill-bar');
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar blur effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.8)';
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
+        const appearOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: "0px 0px -50px 0px"
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    // Animate skill bars when they become visible
+                    if (entry.target.classList.contains('skill-bar')) {
+                        entry.target.style.width = entry.target.dataset.width;
+                    }
                 }
             });
-        }, observerOptions);
+        }, appearOptions);
 
-        // Observe elements for animation
-        document.querySelectorAll('.section-title, .timeline-item, .project-card, .tech-category, .roadmap-content').forEach(el => {
-            observer.observe(el);
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+        
+        document.querySelectorAll('.skill-bar-container').forEach(container => {
+            appearOnScroll.observe(container.querySelector('.skill-bar'));
         });
 
-        // Stagger animation for project cards
-        document.querySelectorAll('.project-card').forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.2}s`;
-        });
-
-        // Stagger animation for tech items
-        document.querySelectorAll('.tech-item').forEach((item, index) => {
-            item.style.transitionDelay = `${index * 0.1}s`;
-        });
-
-        document.querySelectorAll('.tech-category').forEach((item, index) => {
-            item.style.transitionDelay = `${index * 0.1}s`;
-        });
-
-        // Stagger animation for timeline items
-        document.querySelectorAll('.timeline-item').forEach((item, index) => {
-            item.style.transitionDelay = `${index * 0.3}s`;
-        });
-
-        // Stagger animation for roadmap items
-        document.querySelectorAll('.roadmap-content').forEach((item, index) => {
-            item.style.transitionDelay = `${index * 0.4}s`;
-        });
-
-        // Animated profile view counter
-        function animateCounter() {
-            const counter = document.getElementById('viewCount');
-            const target = 2847;
-            let current = 2800;
-            const increment = 1;
-            const duration = 2000;
-            const steps = duration / 50;
-            const stepValue = (target - current) / steps;
-
-            const timer = setInterval(() => {
-                current += stepValue;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                counter.textContent = Math.floor(current).toLocaleString();
-            }, 50);
-        }
-
-        // Start counter animation when footer is visible
-        const footerObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter();
-                    footerObserver.unobserve(entry.target);
-                }
-            });
-        });
-
-        footerObserver.observe(document.querySelector('.footer'));
-
-        // Chatbot interaction
-        // Chatbot interaction with data quotes
-        document.querySelector('.chatbot').addEventListener('click', () => {
-            const dataQuotes = [
-                "💡 Coming Soon! 'Data is the new oil, but analytics is the refinery.'",
-                "🤖 Coming Soon! 'In God we trust, all others bring data.'",
-                "📊 Coming Soon! 'Without big data analytics, companies are blind and deaf.'",
-                "🚀 Coming Soon! 'Data will talk to you if you're willing to listen.'",
-                "⚡ Coming Soon! 'The goal is to turn data into information, and information into insight.'"
-            ];
-
-            const randomQuote = dataQuotes[Math.floor(Math.random() * dataQuotes.length)];
-
-            // Create custom notification
-            const notification = document.createElement('div');
-            notification.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 1rem;">
-            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/26a1.svg" style="width: 30px; height: 30px;">
-            <div>
-                <div style="font-weight: 600; margin-bottom: 0.5rem;">AI Assistant</div>
-                <div>${randomQuote}</div>
-            </div>
-        </div>
-    `;
-            notification.style.cssText = `
-        position: fixed;
-        bottom: 100px;
-        right: 2rem;
-        background: white;
-        color: #1d1d1f;
-        padding: 1.5rem;
-        border-radius: 20px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        z-index: 10000;
-        max-width: 350px;
-        animation: slideInUp 0.4s ease;
-        border: 1px solid rgba(102, 126, 234, 0.1);
-    `;
-
-            document.body.appendChild(notification);
-
-            setTimeout(() => {
-                notification.remove();
-            }, 5000);
-        });
-
-        // Enhanced scroll reveal for hero section
-        const heroContent = document.querySelector('.hero-content');
-        setTimeout(() => {
-            heroContent.style.opacity = '1';
-            heroContent.style.transform = 'translateY(0)';
-        }, 500);
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            const heroContent = document.querySelector('.hero-content');
-
-            if (scrolled < window.innerHeight) {
-                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-                hero.style.opacity = 1 - scrolled / window.innerHeight;
-            }
-        });
-
-        // Mobile menu toggle (if needed)
-        const mobileMenuBtn = document.createElement('button');
-        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        mobileMenuBtn.className = 'mobile-menu-btn';
-        mobileMenuBtn.style.cssText = `
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #1d1d1f;
-            cursor: pointer;
+        // --- Gemini API Call Function ---
+        async function callGemini(prompt, chatHistory = []) {
+            const apiKey = ""; // API key will be injected by the environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
             
-            @media (max-width: 768px) {
-                display: block;
+            const contents = [...chatHistory, { role: "user", parts: [{ text: prompt }] }];
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contents })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API Error: ${response.statusText}`);
             }
-        `;
 
-        // Add mobile menu styles
-        const mobileStyles = document.createElement('style');
-        mobileStyles.textContent = `
-            @media (max-width: 768px) {
-                .mobile-menu-btn {
-                    display: block !important;
-                }
-                
-                .nav-links.mobile-open {
-                    display: flex !important;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    right: 0;
-                    background: rgba(255, 255, 255, 0.98);
-                    backdrop-filter: blur(20px);
-                    flex-direction: column;
-                    padding: 1rem;
-                    border-radius: 0 0 20px 20px;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                }
-                
-                .nav-links.mobile-open li {
-                    margin: 0.5rem 0;
-                }
-            }
-        `;
-        document.head.appendChild(mobileStyles);
-
-        // Insert mobile menu button
-        document.querySelector('.nav-container').appendChild(mobileMenuBtn);
-
-        // Mobile menu functionality
-        let mobileMenuOpen = false;
-        mobileMenuBtn.addEventListener('click', () => {
-            const navLinks = document.querySelector('.nav-links');
-            mobileMenuOpen = !mobileMenuOpen;
-
-            if (mobileMenuOpen) {
-                navLinks.classList.add('mobile-open');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            const result = await response.json();
+            
+            if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                return result.candidates[0].content.parts[0].text;
             } else {
-                navLinks.classList.remove('mobile-open');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                console.error("Invalid response structure:", result);
+                throw new Error("Invalid response structure from API.");
             }
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (mobileMenuOpen && !e.target.closest('.nav-container')) {
-                document.querySelector('.nav-links').classList.remove('mobile-open');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                mobileMenuOpen = false;
-            }
-        });
-
-        // Advanced hover effects for project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function () {
-                this.style.transform = 'translateY(-12px) scale(1.02)';
-            });
-
-            card.addEventListener('mouseleave', function () {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Dynamic background gradient animation
-        let gradientAngle = 135;
-        setInterval(() => {
-            gradientAngle += 0.5;
-            document.querySelector('.hero').style.background =
-                `linear-gradient(${gradientAngle}deg, #fafafa 0%, #f0f2f5 100%)`;
-        }, 100);
-
-        // Typing effect for hero title (optional enhancement)
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
         }
 
-        // Initialize typing effect after page load
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const heroTitle = document.querySelector('.hero h1');
-                const originalText = heroTitle.textContent;
-                typeWriter(heroTitle, originalText, 80);
-            }, 1000);
-        });
+        // --- Contact Form AI ---
+        const contactForm = document.getElementById('contact-form');
+        const geminiContactBtn = document.getElementById('gemini-contact-btn');
+        const messageTextarea = document.getElementById('message');
 
-        // Smooth scrolling with easing
-        function smoothScrollTo(target, duration = 1000) {
-            const targetElement = document.querySelector(target);
-            if (!targetElement) return;
-
-            const startPosition = window.pageYOffset;
-            const targetPosition = targetElement.getBoundingClientRect().top + startPosition - 80;
-            const distance = targetPosition - startPosition;
-            let startTime = null;
-
-            function ease(t, b, c, d) {
-                t /= d / 2;
-                if (t < 1) return c / 2 * t * t + b;
-                t--;
-                return -c / 2 * (t * (t - 2) - 1) + b;
+        geminiContactBtn.addEventListener('click', async () => {
+            const currentMessage = messageTextarea.value;
+            if (currentMessage.trim().length < 10) {
+                alert("Please write a bit more in your message before using the AI assistant.");
+                return;
             }
 
-            function animation(currentTime) {
-                if (startTime === null) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const run = ease(timeElapsed, startPosition, distance, duration);
-                window.scrollTo(0, run);
-                if (timeElapsed < duration) requestAnimationFrame(animation);
-            }
+            geminiContactBtn.disabled = true;
+            geminiContactBtn.innerHTML = '✨ Thinking...';
+            
+            const prompt = `
+                A potential client or employer is writing a message on a portfolio website. 
+                Their current draft is: "${currentMessage}".
+                Please rewrite and expand this into a more professional, clear, and friendly message. 
+                Keep the core intent but improve the language and structure. 
+                Do not add any placeholders like "[Your Name]". Just provide the improved message text.
+            `;
 
-            requestAnimationFrame(animation);
-        }
-
-        // Enhanced CV download functionality
-        document.querySelector('.cv-btn').addEventListener('click', function (e) {
-            e.preventDefault();
-
-            // Create a more realistic download simulation
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
-            this.style.pointerEvents = 'none';
-
-            setTimeout(() => {
-                // Simulate download
-                const link = document.createElement('a');
-                link.href = './Ranjan_PowerBI_Developer_CV.pdf';
-                link.download = 'Ranjan_PowerBI_Developer_CV.pdf';
-                link.click();
-
-                // Reset button
-                this.innerHTML = '<i class="fas fa-download"></i> Download CV';
-                this.style.pointerEvents = 'auto';
-
-                // Show success message
-                const successMsg = document.createElement('div');
-                successMsg.textContent = 'CV downloaded successfully!';
-                successMsg.style.cssText = `
-                    position: fixed;
-                    top: 100px;
-                    right: 20px;
-                    background: #28a745;
-                    color: white;
-                    padding: 1rem 1.5rem;
-                    border-radius: 10px;
-                    z-index: 10000;
-                    animation: slideIn 0.3s ease;
-                `;
-
-                document.body.appendChild(successMsg);
-
-                setTimeout(() => {
-                    successMsg.remove();
-                }, 3000);
-            }, 1500);
-        });
-
-        // Roadmap navigation functionality
-        let currentStage = 0;
-        const stages = document.querySelectorAll('.roadmap-stage');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-
-        function updateStageDisplay() {
-            stages.forEach((stage, index) => {
-                stage.classList.toggle('active', index === currentStage);
-            });
-
-            prevBtn.style.opacity = currentStage === 0 ? '0.5' : '1';
-            nextBtn.style.opacity = currentStage === stages.length - 1 ? '0.5' : '1';
-        }
-
-        prevBtn.addEventListener('click', () => {
-            if (currentStage > 0) {
-                currentStage--;
-                updateStageDisplay();
+            try {
+                const improvedMessage = await callGemini(prompt);
+                messageTextarea.value = improvedMessage;
+            } catch (error) {
+                console.error("Error with contact form AI:", error);
+                alert("Sorry, the AI assistant isn't available right now. Please try again later.");
+            } finally {
+                geminiContactBtn.disabled = false;
+                geminiContactBtn.innerHTML = '✨ Auto-Complete with AI';
             }
         });
 
-        nextBtn.addEventListener('click', () => {
-            if (currentStage < stages.length - 1) {
-                currentStage++;
-                updateStageDisplay();
+        // --- Chatbot Logic ---
+        const chatbotFab = document.getElementById('chatbot-fab');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const closeChatbotBtn = document.getElementById('close-chatbot-btn');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotInputField = document.getElementById('chatbot-input-field');
+        const chatbotSendBtn = document.getElementById('chatbot-send-btn');
+        
+        let chatbotHistory = [];
+
+        const addMessage = (text, sender, isLoading = false) => {
+            const messageId = `msg-${Date.now()}`;
+            const messageElement = document.createElement('div');
+            messageElement.id = messageId;
+
+            if (isLoading) {
+                messageElement.className = 'chat-message bot-message typing-indicator';
+                messageElement.innerHTML = '<span></span><span></span><span></span>';
+            } else {
+                messageElement.className = `chat-message ${sender}-message`;
+                messageElement.innerHTML = text; // Use innerHTML to render links
+            }
+            
+            chatbotMessages.appendChild(messageElement);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            return messageId;
+        };
+
+        const handleUserInput = async () => {
+            const userInput = chatbotInputField.value.trim();
+            if (userInput === "") return;
+
+            addMessage(userInput, 'user');
+            chatbotInputField.value = "";
+            const loadingId = addMessage('', 'bot', true);
+
+            const portfolioContext = `
+                This is the portfolio of Smuruti Ranjan Swain, a Business Intelligence Analyst.
+                Experience: Business Intelligence Analyst at Vassardigital.ai (Jan 2023 - Present), IT Business Analyst at Vassar labs (Jun 2021 - Dec 2022).
+                Key Skills: Power BI, DAX, SQL, Python, Azure, Tableau, SSAS/SSRS/SSIS.
+                Projects: 
+                1. Executive Dashboard: Real-time KPI monitoring, saved $655.3M. Tech: Power BI, DAX, Azure SQL.
+                2. Enterprise Data Platform: Predictive modeling for 200M+ records, reduced manual work by 70%. Tech: Power BI, Python, ML, SQL Server.
+                Contact: smrutiranjan.swain@hotmail.com, LinkedIn: /in/ranjan-linkedin.
+            `;
+            const prompt = `You are a friendly and professional AI assistant for Smuruti Ranjan Swain's portfolio. Your name is 'Spark'. Use the provided context to answer questions. Keep your answers concise and helpful. If asked about something outside of the portfolio context, politely state that you can only answer questions about Smuruti's professional profile. \n\nContext:\n${portfolioContext}\n\n---\n\nUser Question: "${userInput}"`;
+
+            try {
+                const botResponse = await callGemini(prompt, chatbotHistory);
+                
+                document.getElementById(loadingId).remove();
+                addMessage(botResponse, 'bot');
+
+                // Update history
+                chatbotHistory.push({ role: "user", parts: [{ text: userInput }] });
+                chatbotHistory.push({ role: "model", parts: [{ text: botResponse }] });
+
+            } catch (error) {
+                console.error("Chatbot error:", error);
+                document.getElementById(loadingId).remove();
+                addMessage("Sorry, I'm having trouble connecting right now. Please try again in a moment.", 'bot');
+            }
+        };
+
+        chatbotFab.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('visible');
+            if (chatbotWindow.classList.contains('visible') && chatbotMessages.children.length === 0) {
+                 const welcomeMessage = `Hello! I'm Spark, Smuruti's AI assistant. Feel free to ask me about his skills, experience, or projects.`;
+                addMessage(welcomeMessage, 'bot');
+                chatbotHistory = [{ role: "model", parts: [{ text: welcomeMessage }] }];
             }
         });
 
-        // Auto-advance stages every 5 seconds
-        setInterval(() => {
-            currentStage = (currentStage + 1) % stages.length;
-            updateStageDisplay();
-        }, 5000);
+        closeChatbotBtn.addEventListener('click', () => {
+            chatbotWindow.classList.remove('visible');
+        });
 
-        // Initialize roadmap
-        updateStageDisplay();
-
-        // Add slide-in animation for success message
-        const slideInAnimation = document.createElement('style');
-        slideInAnimation.textContent = `
-            @keyframes slideIn {
-                from {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
+        chatbotSendBtn.addEventListener('click', handleUserInput);
+        chatbotInputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserInput();
             }
-        `;
-        document.head.appendChild(slideInAnimation);
+        });
 
-        console.log('Power BI Portfolio loaded successfully! 🚀');
     </script>
 </body>
-
 </html>
