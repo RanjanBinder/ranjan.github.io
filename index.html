@@ -365,6 +365,12 @@
         .cat-deploy { background-color: #f5f3ff; border-color: #ddd6fe; color: #5b21b6; } /* Purple */
         .roadmap-milestone-wrapper { display: none; }
 
+        /* Active Nav Link Style */
+        nav a.active {
+            color: #0078d4;
+            font-weight: 700;
+        }
+
         @media (max-width: 1024px) {
             .roadmap-grid {
                 display: flex;
@@ -397,7 +403,8 @@
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200/80">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-xl font-bold text-gray-800">Smuruti Ranjan Swain</a>
-            <div class="hidden md:flex items-center space-x-8 text-sm text-gray-600">
+            <div id="nav-links" class="hidden md:flex items-center space-x-8 text-sm text-gray-600">
+                <a href="#hero" class="hover:text-blue-600 transition-colors">Home</a>
                 <a href="#experience" class="hover:text-blue-600 transition-colors">Experience</a>
                 <a href="#projects" class="hover:text-blue-600 transition-colors">Projects</a>
                 <a href="#roadmap" class="hover:text-blue-600 transition-colors">Roadmap</a>
@@ -410,9 +417,9 @@
     </header>
 
     <!-- Main Content -->
-    <main class="pt-20">
+    <main>
         <!-- Hero Section -->
-        <section id="hero" class="relative pt-24 pb-32">
+        <section id="hero" class="pt-32 pb-32 relative">
             <div class="hero-bg"></div>
             <div class="container mx-auto px-6 fade-in relative z-10">
                 <div class="flex flex-col md:flex-row items-center">
@@ -821,7 +828,11 @@
     </footer>
 
     <!-- Chatbot -->
-    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f916.svg%22%20alt=%22Chatbot%22%20id=%22chatbot-fab%22%20class=%22chatbot-fab">
+    <button id="chatbot-fab" class="chatbot-fab btn-primary text-white shadow-lg flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.837 8.837 0 01-4.445-1.272l-1.294.97c-.337.253-.768-.034-.768-.432V13.5A7.002 7.002 0 012 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm4 0H9v2h2V9zm4 0h-2v2h2V9z" clip-rule="evenodd" />
+        </svg>
+    </button>
     <div id="chatbot-window" class="chatbot-window">
         <div class="chatbot-header">
             <span>✨ AI Assistant</span>
@@ -838,34 +849,49 @@
 
 
     <script>
-        // --- Intersection Observer Setup ---
+        // --- Intersection Observer for Animations and Active Nav Link ---
         const faders = document.querySelectorAll('.fade-in');
         const skillBars = document.querySelectorAll('.skill-bar');
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('#nav-links a[href^="#"]');
+        const header = document.querySelector('header');
 
-        const appearOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
+        const observerOptions = {
+            rootMargin: `-${header.offsetHeight}px 0px 0px 0px`,
+            threshold: 0.4
         };
 
-        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Handle fade-in animations
                     entry.target.classList.add('visible');
-                    // Animate skill bars when they become visible
-                    if (entry.target.classList.contains('skill-bar')) {
-                        entry.target.style.width = entry.target.dataset.width;
+                    
+                    // Animate skill bars
+                    if (entry.target.id === 'skills') {
+                        skillBars.forEach(bar => {
+                            bar.style.width = bar.dataset.width;
+                        });
                     }
+
+                    // Update active nav link
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
                 }
             });
-        }, appearOptions);
+        }, observerOptions);
 
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+            // Also observe fade-in elements individually for staggered animations
+            section.querySelectorAll('.fade-in').forEach(el => sectionObserver.observe(el));
         });
-        
-        document.querySelectorAll('.skill-bar-container').forEach(container => {
-            appearOnScroll.observe(container.querySelector('.skill-bar'));
-        });
+
 
         // --- Gemini API Call Function ---
         async function callGemini(prompt, chatHistory = []) {
