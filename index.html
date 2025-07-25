@@ -214,29 +214,6 @@
             30% { transform: translateY(-6px); }
         }
 
-        /* Skill Bar Styles */
-        .skill-bar-container {
-            width: 100%;
-            background-color: #e9ecef;
-            border-radius: 9999px;
-            height: 1rem;
-            overflow: hidden;
-        }
-        .skill-bar {
-            background: linear-gradient(90deg, #0078d4, #00bcf2);
-            height: 100%;
-            border-radius: 9999px;
-            transition: width 0.8s ease-in-out;
-        }
-        .project-tag {
-            background-color: #e0f2fe;
-            color: #0c4a6e;
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            display: inline-block;
-        }
         /* Project Card Styles */
         .project-card {
             background-color: #ffffff;
@@ -370,6 +347,40 @@
             color: #0078d4;
             font-weight: 700;
         }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1001;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.visible { opacity: 1; visibility: visible; }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.visible .modal-content { transform: scale(1); }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0078d4;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         @media (max-width: 1024px) {
             .roadmap-grid {
@@ -405,6 +416,7 @@
             <a href="#" class="text-xl font-bold text-gray-800">Smuruti Ranjan Swain</a>
             <div id="nav-links" class="hidden md:flex items-center space-x-8 text-sm text-gray-600">
                 <a href="#hero" class="hover:text-blue-600 transition-colors">Home</a>
+                <a href="#platforms" class="hover:text-blue-600 transition-colors">Platforms</a>
                 <a href="#experience" class="hover:text-blue-600 transition-colors">Experience</a>
                 <a href="#projects" class="hover:text-blue-600 transition-colors">Projects</a>
                 <a href="#roadmap" class="hover:text-blue-600 transition-colors">Roadmap</a>
@@ -418,8 +430,15 @@
 
     <!-- Main Content -->
     <main>
+        <!-- Quote Section -->
+        <section class="bg-gray-800 text-gray-200 py-4 mt-16">
+            <div class="container mx-auto px-6 text-center">
+                <p class="text-base font-medium tracking-wide italic">"UX is life. Machine Learning is the predictability of life. AI is the creation of alternate life."</p>
+            </div>
+        </section>
+
         <!-- Hero Section -->
-        <section id="hero" class="pt-32 pb-32 relative">
+        <section id="hero" class="pt-24 pb-32 relative">
             <div class="hero-bg"></div>
             <div class="container mx-auto px-6 fade-in relative z-10">
                 <div class="flex flex-col md:flex-row items-center">
@@ -470,8 +489,41 @@
             </div>
         </section>
 
+        <!-- Coding & BI Platforms Section -->
+        <section id="platforms" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Coding & BI Platforms</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Demonstrating practical skills and problem-solving abilities on competitive platforms.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                    <!-- LeetCode Card -->
+                    <div class="bg-white p-8 rounded-xl shadow-md text-center fade-in hover:shadow-xl transition-shadow duration-300">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode Logo" class="h-10 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold mb-2">LeetCode</h3>
+                        <p class="text-gray-600 mb-4">Solved 200+ problems, focusing on SQL and database challenges to sharpen my analytical querying skills.</p>
+                        <a href="#" class="font-semibold text-blue-600 hover:underline">View Profile &rarr;</a>
+                    </div>
+                    <!-- HackerRank Card -->
+                    <div class="bg-white p-8 rounded-xl shadow-md text-center fade-in hover:shadow-xl transition-shadow duration-300" style="transition-delay: 100ms;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png" alt="HackerRank Logo" class="h-10 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold mb-2">HackerRank</h3>
+                        <p class="text-gray-600 mb-4">Earned 5 stars in SQL and Python, demonstrating proficiency in data manipulation and algorithmic thinking.</p>
+                        <a href="#" class="font-semibold text-blue-600 hover:underline">View Profile &rarr;</a>
+                    </div>
+                    <!-- Power BI Exams Card -->
+                    <div class="bg-white p-8 rounded-xl shadow-md text-center fade-in hover:shadow-xl transition-shadow duration-300" style="transition-delay: 200ms;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI Logo" class="h-10 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold mb-2">Power BI Assessments</h3>
+                        <p class="text-gray-600 mb-4">Top 10% scores on platforms like Guy in a Cube, validating expertise in DAX, data modeling, and visualization.</p>
+                        <a href="#" class="font-semibold text-blue-600 hover:underline">View Certifications &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Work Experience Section -->
-        <section id="experience" class="py-24 bg-white">
+        <section id="experience" class="py-24">
             <div class="container mx-auto px-6">
                 <h2 class="text-center text-3xl font-bold text-gray-800 mb-12 fade-in">Work Experience</h2>
                 <div class="max-w-3xl mx-auto space-y-12">
@@ -516,7 +568,7 @@
         </section>
         
         <!-- Projects Section -->
-        <section id="projects" class="py-24">
+        <section id="projects" class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-blue-600 mb-4 fade-in">PROJECTS</h2>
@@ -528,10 +580,10 @@
                         <img src="https://images.unsplash.com/photo-1630514933684-575806916806?q=80&w=1200&auto=format&fit=crop" alt="Executive Dashboard" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/3b82f6/ffffff?text=Executive+Dashboard';">
                         <div class="p-6 flex-grow flex flex-col">
                             <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-xl font-bold text-gray-800">Executive Dashboard</h3>
+                                <h3 class="text-xl font-bold text-gray-800 project-title">Executive Dashboard</h3>
                                 <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fas fa-external-link-alt"></i></a>
                             </div>
-                            <p class="text-gray-600 mb-6">Comprehensive executive-level dashboard providing real-time KPI monitoring with drill-down capabilities across multiple business units and 13 manufacturing sites.</p>
+                            <p class="text-gray-600 mb-6 project-description">Comprehensive executive-level dashboard providing real-time KPI monitoring with drill-down capabilities across multiple business units and 13 manufacturing sites.</p>
                             
                             <h4 class="font-semibold text-gray-700 mb-3">TECHNOLOGIES</h4>
                             <div class="flex flex-wrap gap-2 mb-6">
@@ -550,6 +602,9 @@
                             </ul>
                             
                             <p class="project-impact">IMPACT: Enabled $655.3M in cost avoidance</p>
+                            <button class="w-full mt-6 btn-gemini font-semibold px-6 py-3 rounded-lg flex items-center justify-center gap-2 generate-insights-btn">
+                                ✨ Generate AI Project Analysis
+                            </button>
                         </div>
                     </div>
 
@@ -558,10 +613,10 @@
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Enterprise Data Platform" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/10b981/ffffff?text=Data+Platform';">
                         <div class="p-6 flex-grow flex flex-col">
                             <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-xl font-bold text-gray-800">Enterprise Data Platform</h3>
+                                <h3 class="text-xl font-bold text-gray-800 project-title">Enterprise Data Platform</h3>
                                 <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fas fa-external-link-alt"></i></a>
                             </div>
-                            <p class="text-gray-600 mb-6">Advanced analytics solution with predictive modeling and performance analysis for strategic planning, handling over 200M+ records.</p>
+                            <p class="text-gray-600 mb-6 project-description">Advanced analytics solution with predictive modeling and performance analysis for strategic planning, handling over 200M+ records.</p>
                             
                             <h4 class="font-semibold text-gray-700 mb-3">TECHNOLOGIES</h4>
                             <div class="flex flex-wrap gap-2 mb-6">
@@ -580,6 +635,9 @@
                             </ul>
                             
                             <p class="project-impact">IMPACT: 70% reduction in manual data processing</p>
+                             <button class="w-full mt-6 btn-gemini font-semibold px-6 py-3 rounded-lg flex items-center justify-center gap-2 generate-insights-btn">
+                                ✨ Generate AI Project Analysis
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -588,7 +646,7 @@
 
 
         <!-- UPDATED Roadmap Section -->
-        <section id="roadmap" class="py-24 bg-white">
+        <section id="roadmap" class="py-24">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-blue-600 mb-4 fade-in">POWER BI ROADMAP</h2>
@@ -600,15 +658,15 @@
                     <div class="roadmap-timeline-bar"></div>
 
                     <!-- Milestones -->
-                    <div class="roadmap-milestone" style="grid-column: 1;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">Foundations</div></div></div>
-                    <div class="roadmap-milestone" style="grid-column: 2;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">Core Development</div></div></div>
-                    <div class="roadmap-milestone" style="grid-column: 3;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">Advanced Techniques</div></div></div>
-                    <div class="roadmap-milestone" style="grid-column: 4;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">Enterprise & AI</div></div></div>
+                    <div class="roadmap-milestone" style="grid-column: 1;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">2025: Foundations</div></div></div>
+                    <div class="roadmap-milestone" style="grid-column: 2;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">2026: Core Development</div></div></div>
+                    <div class="roadmap-milestone" style="grid-column: 3;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">2027: Advanced Deployment</div></div></div>
+                    <div class="roadmap-milestone" style="grid-column: 4;"><div class="roadmap-milestone-dot"><div class="roadmap-milestone-title">2028: Enterprise & AI</div></div></div>
 
                     <!-- Skills Stacks -->
                     <!-- Column 1 -->
                     <div class="roadmap-skill-stack top" style="grid-column: 1;">
-                        <div class="roadmap-milestone-wrapper">Foundations</div>
+                        <div class="roadmap-milestone-wrapper">2025: Foundations</div>
                         <div class="roadmap-skill-item cat-data-prep">Power Query (M)</div>
                     </div>
                     <div class="roadmap-skill-stack bottom" style="grid-column: 1;">
@@ -618,7 +676,7 @@
 
                     <!-- Column 2 -->
                     <div class="roadmap-skill-stack top" style="grid-column: 2;">
-                        <div class="roadmap-milestone-wrapper">Core Development</div>
+                        <div class="roadmap-milestone-wrapper">2026: Core Development</div>
                         <div class="roadmap-skill-item cat-modeling">Advanced DAX</div>
                         <div class="roadmap-skill-item cat-modeling">Time Intelligence</div>
                     </div>
@@ -630,9 +688,9 @@
 
                     <!-- Column 3 -->
                     <div class="roadmap-skill-stack top" style="grid-column: 3;">
-                        <div class="roadmap-milestone-wrapper">Advanced Techniques</div>
-                        <div class="roadmap-skill-item cat-advanced">Performance Tuning (DAX Studio)</div>
-                        <div class="roadmap-skill-item cat-advanced">Incremental Refresh</div>
+                        <div class="roadmap-milestone-wrapper">2027: Advanced Deployment</div>
+                        <div class="roadmap-skill-item cat-advanced">Performance Tuning</div>
+                        <div class="roadmap-skill-item cat-advanced">Natural Language Q&A</div>
                     </div>
                     <div class="roadmap-skill-stack bottom" style="grid-column: 3;">
                         <div class="roadmap-skill-item cat-deploy">Power BI Service</div>
@@ -642,13 +700,13 @@
                     
                     <!-- Column 4 -->
                     <div class="roadmap-skill-stack top" style="grid-column: 4;">
-                        <div class="roadmap-milestone-wrapper">Enterprise & AI</div>
+                        <div class="roadmap-milestone-wrapper">2028: Enterprise & AI</div>
                         <div class="roadmap-skill-item cat-deploy">Microsoft Fabric</div>
-                        <div class="roadmap-skill-item cat-deploy">CI/CD Pipelines</div>
+                        <div class="roadmap-skill-item cat-advanced">Automated Insight Summaries</div>
                     </div>
                     <div class="roadmap-skill-stack bottom" style="grid-column: 4;">
                         <div class="roadmap-skill-item cat-advanced">Embedded Analytics</div>
-                        <div class="roadmap-skill-item cat-advanced">AI/ML Integration</div>
+                        <div class="roadmap-skill-item cat-advanced">GenAI-Powered Forecasting</div>
                         <div class="roadmap-skill-item cat-advanced">Streaming Dataflows</div>
                     </div>
 
@@ -657,90 +715,72 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-24">
+        <section id="skills" class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <h2 class="text-center text-3xl font-bold text-gray-800 mb-12 fade-in">Core Competencies</h2>
-                <div class="max-w-4xl mx-auto space-y-12">
-                    <!-- BI & Visualization -->
-                    <div class="fade-in">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-6 text-blue-600">BI & Visualization</h3>
-                        <div class="space-y-8">
-                            <!-- Skill Item -->
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center mb-1">
-                                    <p class="font-semibold text-gray-700">Power BI / DAX / Power Query</p>
-                                    <p class="text-sm font-medium text-blue-600">Expert</p>
-                                </div>
-                                <div class="skill-bar-container"><div class="skill-bar" style="width: 0%;" data-width="95%"></div></div>
-                                <div class="flex items-center gap-2 flex-wrap">
-                                    <span class="project-tag">Executive Dashboard</span>
-                                    <span class="project-tag">Enterprise Data Platform</span>
-                                </div>
-                            </div>
-                            <!-- Skill Item -->
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center mb-1">
-                                    <p class="font-semibold text-gray-700">Tableau</p>
-                                    <p class="text-sm font-medium text-blue-600">Proficient</p>
-                                </div>
-                                <div class="skill-bar-container"><div class="skill-bar" style="width: 0%;" data-width="75%"></div></div>
-                            </div>
-                            <!-- Skill Item -->
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center mb-1">
-                                    <p class="font-semibold text-gray-700">SSAS / SSRS / SSIS</p>
-                                    <p class="text-sm font-medium text-blue-600">Advanced</p>
-                                </div>
-                                <div class="skill-bar-container"><div class="skill-bar" style="width: 0%;" data-width="85%"></div></div>
-                                <div class="flex items-center gap-2 flex-wrap">
-                                    <span class="project-tag">Enterprise Data Platform</span>
-                                </div>
-                            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                    <!-- Skill Card 1: Power BI -->
+                    <div class="bg-white p-6 rounded-xl shadow-md fade-in hover:shadow-xl transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4"><i class="fas fa-chart-pie fa-fw"></i></div>
+                            <h3 class="text-xl font-bold text-gray-800">Power BI</h3>
                         </div>
+                        <p class="text-gray-600 mb-4 text-sm">Expert in creating dynamic, insightful reports and dashboards from end-to-end.</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Advanced DAX</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Power Query (M)</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Data Modeling</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Performance Tuning</li>
+                        </ul>
                     </div>
-                    <!-- Data & Cloud -->
-                    <div class="fade-in">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-6 text-green-600">Data & Cloud</h3>
-                        <div class="space-y-8">
-                            <!-- Skill Item -->
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center mb-1">
-                                    <p class="font-semibold text-gray-700">SQL / T-SQL</p>
-                                    <p class="text-sm font-medium text-green-600">Expert</p>
-                                </div>
-                                <div class="skill-bar-container"><div class="skill-bar bg-green-500" style="width: 0%; background: linear-gradient(90deg, #10b981, #34d399);" data-width="95%"></div></div>
-                                <div class="flex items-center gap-2 flex-wrap">
-                                    <span class="project-tag">Executive Dashboard</span>
-                                    <span class="project-tag">Enterprise Data Platform</span>
-                                </div>
-                            </div>
-                             <!-- Skill Item -->
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center mb-1">
-                                    <p class="font-semibold text-gray-700">Python (Pandas, Scikit-learn)</p>
-                                    <p class="text-sm font-medium text-green-600">Advanced</p>
-                                </div>
-                                <div class="skill-bar-container"><div class="skill-bar bg-green-500" style="width: 0%; background: linear-gradient(90deg, #10b981, #34d399);" data-width="80%"></div></div>
-                                 <div class="flex items-center gap-2 flex-wrap">
-                                    <span class="project-tag">Enterprise Data Platform</span>
-                                </div>
-                            </div>
-                            <!-- Skill Item -->
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center mb-1">
-                                    <p class="font-semibold text-gray-700">Azure (Synapse, Data Factory) & Microsoft Fabric</p>
-                                    <p class="text-sm font-medium text-green-600">Proficient</p>
-                                </div>
-                                <div class="skill-bar-container"><div class="skill-bar bg-green-500" style="width: 0%; background: linear-gradient(90deg, #10b981, #34d399);" data-width="70%"></div></div>
-                            </div>
+                    <!-- Skill Card 2: SQL -->
+                    <div class="bg-white p-6 rounded-xl shadow-md fade-in hover:shadow-xl transition-shadow duration-300" style="transition-delay: 100ms;">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 text-green-600 p-3 rounded-full mr-4"><i class="fas fa-database fa-fw"></i></div>
+                            <h3 class="text-xl font-bold text-gray-800">SQL</h3>
                         </div>
+                        <p class="text-gray-600 mb-4 text-sm">Expert in querying, manipulating, and optimizing complex relational databases.</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Complex Joins & CTEs</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Stored Procedures</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Window Functions</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Query Optimization</li>
+                        </ul>
+                    </div>
+                    <!-- Skill Card 3: Python -->
+                    <div class="bg-white p-6 rounded-xl shadow-md fade-in hover:shadow-xl transition-shadow duration-300" style="transition-delay: 200ms;">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full mr-4"><i class="fab fa-python fa-fw"></i></div>
+                            <h3 class="text-xl font-bold text-gray-800">Python</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm">Proficient in using Python for data automation, transformation, and analysis.</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Pandas & NumPy</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>ETL Automation</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>API Integration</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Scikit-learn Basics</li>
+                        </ul>
+                    </div>
+                    <!-- Skill Card 4: Azure & Cloud -->
+                     <div class="bg-white p-6 rounded-xl shadow-md fade-in hover:shadow-xl transition-shadow duration-300" style="transition-delay: 300ms;">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 text-purple-600 p-3 rounded-full mr-4"><i class="fas fa-cloud fa-fw"></i></div>
+                            <h3 class="text-xl font-bold text-gray-800">Azure & Cloud</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm">Experienced in leveraging cloud services for scalable data solutions.</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Azure Synapse</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Azure Data Factory</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Microsoft Fabric</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i>Data Warehousing</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-24 bg-white">
+        <section id="contact" class="py-24">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-blue-600 mb-4 fade-in">CONTACT</h2>
@@ -826,6 +866,19 @@
             <p class="text-sm text-gray-400">&copy; 2025 Smuruti Ranjan Swain. Designed with a touch of AI.</p>
         </div>
     </footer>
+
+    <!-- AI Project Analysis Modal -->
+    <div id="insights-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h2 id="modal-title" class="text-2xl font-bold">✨ AI Project Analysis</h2>
+                <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+            </div>
+            <div id="modal-body">
+                <!-- Loader and content will be injected here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Chatbot -->
     <button id="chatbot-fab" class="chatbot-fab btn-primary text-white shadow-lg flex items-center justify-center">
@@ -975,7 +1028,7 @@
                 messageElement.innerHTML = '<span></span><span></span><span></span>';
             } else {
                 messageElement.className = `chat-message ${sender}-message`;
-                messageElement.innerHTML = text; // Use innerHTML to render links
+                messageElement.innerHTML = text.replace(/\n/g, '<br>'); // Use innerHTML to render line breaks
             }
             
             chatbotMessages.appendChild(messageElement);
@@ -1037,6 +1090,50 @@
             if (e.key === 'Enter') {
                 handleUserInput();
             }
+        });
+
+        // --- NEW: AI Project Analysis Modal Logic ---
+        const insightsModal = document.getElementById('insights-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const insightBtns = document.querySelectorAll('.generate-insights-btn');
+
+        const openModal = () => insightsModal.classList.add('visible');
+        const closeModal = () => insightsModal.classList.remove('visible');
+
+        closeModalBtn.addEventListener('click', closeModal);
+        insightsModal.addEventListener('click', (e) => { if (e.target === insightsModal) closeModal(); });
+
+        insightBtns.forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                const card = e.target.closest('.project-card');
+                const projectTitle = card.querySelector('.project-title').innerText;
+                const projectDescription = card.querySelector('.project-description').innerText;
+                
+                openModal();
+                modalTitle.innerText = `✨ AI Analysis: ${projectTitle}`;
+                modalBody.innerHTML = '<div class="loader"></div><p class="text-center text-gray-500">Generating insights...</p>';
+
+                const prompt = `
+                    As an expert BI consultant, analyze the following project.
+                    - Project Title: "${projectTitle}"
+                    - Description: "${projectDescription}"
+                    
+                    Provide a concise analysis in HTML format. Use <h3> for titles and <ul><li> for lists. Cover these sections:
+                    1.  **Key Objectives & Goals:** What was the project trying to achieve?
+                    2.  **Probable Technical Implementation:** What technologies and methods were likely used?
+                    3.  **Business Impact & Value:** What was the tangible business outcome?
+                `;
+
+                try {
+                    const analysis = await callGemini(prompt);
+                    modalBody.innerHTML = analysis;
+                } catch (error) {
+                    console.error("Error generating project insights:", error);
+                    modalBody.innerHTML = `<p class="text-red-500 text-center">Failed to generate AI analysis. Please try again later.</p>`;
+                }
+            });
         });
 
     </script>
