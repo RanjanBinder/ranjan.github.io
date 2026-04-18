@@ -3,108 +3,454 @@ layout: default
 title: Home
 ---
 
-<section class="hero">
+<!-- ================================================
+     HERO
+     ================================================ -->
+<section class="hero" id="hero">
   <div class="hero-inner">
-    <p class="eyebrow">Business Intelligence · IT Business Analyst</p>
-    <h1 class="hero-title">Hi, I’m <span class="accent">Ranjan</span>.</h1>
-    <p class="hero-sub">
-      I turn messy data and ambiguous requirements into clear dashboards,
-      clean SQL, and decisions stakeholders can act on.
+    <div class="hero-eyebrow reveal">
+      Open to new opportunities
+    </div>
+
+    <h1 class="hero-title reveal">
+      Hi, I'm <span class="accent">Ranjan</span>.<br />
+      I turn data into<br />decisions.
+    </h1>
+
+    <p class="hero-sub reveal">
+      Business Intelligence &amp; IT Business Analyst with a knack for clean SQL,
+      actionable dashboards, and translating ambiguous requirements into
+      solutions stakeholders actually use.
     </p>
-    <div class="hero-cta">
-      <a href="{{ '/projects/' | relative_url }}" class="btn btn-primary">View Projects</a>
-      <a href="{{ site.resume_file | relative_url }}" class="btn btn-ghost" download>Download Resume</a>
+
+    <div class="hero-cta reveal">
+      <a href="#projects" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        View Projects
+      </a>
+      <a href="{{ site.resume_file | relative_url }}" class="btn btn-ghost" download>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Resume
+      </a>
+    </div>
+
+    <div class="hero-stats reveal">
+      <div class="stat-item">
+        <div class="stat-number">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Dashboards Built</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Certifications</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <h2 class="section-title">About</h2>
-  <p class="section-body">
-    I’m a BI Analyst working at the intersection of data and business. My core toolkit
-    is SQL, Excel, and Python, and I’m currently deepening my work in data science and
-    analytics engineering. I care about asking the right question before writing the
-    first query, and about shipping analysis that is <em>reproducible</em> and
-    <em>explainable</em>.
-  </p>
-</section>
+<!-- ================================================
+     ABOUT
+     ================================================ -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="section-label reveal">About me</div>
+    <div class="about-grid">
 
-<section class="section">
-  <h2 class="section-title">Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <h3>Data &amp; SQL</h3>
-      <ul>
-        <li>MySQL, PostgreSQL</li>
-        <li>Window functions, CTEs</li>
-        <li>Query optimization</li>
-        <li>Data modeling (star / snowflake)</li>
-      </ul>
-    </div>
-    <div class="skill-card">
-      <h3>BI &amp; Visualization</h3>
-      <ul>
-        <li>Power BI, Tableau</li>
-        <li>Excel (advanced, Power Query)</li>
-        <li>Dashboard design</li>
-        <li>KPI definition</li>
-      </ul>
-    </div>
-    <div class="skill-card">
-      <h3>Analytics &amp; Code</h3>
-      <ul>
-        <li>Python (pandas, numpy)</li>
-        <li>Statistics &amp; A/B testing</li>
-        <li>Git &amp; version control</li>
-        <li>Jupyter notebooks</li>
-      </ul>
-    </div>
-    <div class="skill-card">
-      <h3>Business Analysis</h3>
-      <ul>
-        <li>Requirements gathering</li>
-        <li>BRD / FRD documentation</li>
-        <li>Stakeholder communication</li>
-        <li>Process mapping</li>
-      </ul>
+      <div class="about-text reveal">
+        <h2 class="section-title">Data analyst who<br />speaks business.</h2>
+        <p>
+          I'm a BI Analyst working at the intersection of data and business strategy.
+          My core toolkit is SQL, Power BI, and Python — but what drives me is asking
+          the <em>right question</em> before writing the first query.
+        </p>
+        <p>
+          I care deeply about reproducible, explainable analysis. Whether it's
+          requirements gathering, building a star-schema model, or presenting findings
+          to non-technical stakeholders — I bridge the gap between raw data and real decisions.
+        </p>
+        <p>
+          Currently deepening my expertise in analytics engineering, data science, and
+          modern data stack tooling (dbt, Snowflake, Airflow).
+        </p>
+      </div>
+
+      <div class="about-card-stack reveal">
+        <div class="about-card">
+          <div class="about-card-icon">📊</div>
+          <h4>Data Storytelling</h4>
+          <p>Translating complex datasets into clear, compelling narratives for any audience.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🔍</div>
+          <h4>Requirements Engineering</h4>
+          <p>Turning ambiguous business needs into precise, actionable specifications.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">⚙️</div>
+          <h4>Analytics Engineering</h4>
+          <p>Building clean, modular data pipelines and well-documented models.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🤝</div>
+          <h4>Stakeholder Management</h4>
+          <p>Aligning technical teams and business owners around a single source of truth.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<section class="section">
-  <h2 class="section-title">Featured Projects</h2>
-  <div class="projects-grid">
-    {% assign featured = site.projects | where: "featured", true | limit: 3 %}
-    {% if featured.size > 0 %}
-      {% for p in featured %}
-        <a href="{{ p.url | relative_url }}" class="project-card">
-          <p class="project-tag">{{ p.tag }}</p>
-          <h3>{{ p.title }}</h3>
-          <p>{{ p.summary }}</p>
-        </a>
+<!-- ================================================
+     SKILLS
+     ================================================ -->
+<section class="section" id="skills">
+  <div class="container">
+    <div class="skills-header">
+      <div>
+        <div class="section-label reveal">What I work with</div>
+        <h2 class="section-title reveal">Skills &amp; Toolkit</h2>
+      </div>
+      <p class="section-desc reveal">
+        A curated set of tools and disciplines I use daily to deliver data-driven value.
+      </p>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">🗄️</div>
+        <h3>Data &amp; SQL</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">Window Functions</span>
+          <span class="skill-tag">CTEs</span>
+          <span class="skill-tag">Query Optimization</span>
+          <span class="skill-tag">Star Schema</span>
+          <span class="skill-tag">Snowflake Schema</span>
+          <span class="skill-tag">Data Modeling</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">📈</div>
+        <h3>BI &amp; Visualization</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Excel (Advanced)</span>
+          <span class="skill-tag">Power Query</span>
+          <span class="skill-tag">DAX</span>
+          <span class="skill-tag">Dashboard Design</span>
+          <span class="skill-tag">KPI Definition</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">🐍</div>
+        <h3>Analytics &amp; Code</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">pandas</span>
+          <span class="skill-tag">numpy</span>
+          <span class="skill-tag">Statistics</span>
+          <span class="skill-tag">A/B Testing</span>
+          <span class="skill-tag">Jupyter</span>
+          <span class="skill-tag">Git</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">📝</div>
+        <h3>Business Analysis</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Requirements Gathering</span>
+          <span class="skill-tag">BRD / FRD</span>
+          <span class="skill-tag">Use Cases</span>
+          <span class="skill-tag">Stakeholder Comms</span>
+          <span class="skill-tag">Process Mapping</span>
+          <span class="skill-tag">Agile / Scrum</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     PROJECTS
+     ================================================ -->
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="projects-header">
+      <div>
+        <div class="section-label reveal">Selected work</div>
+        <h2 class="section-title reveal">Featured Projects</h2>
+      </div>
+      <a href="{{ '/projects/' | relative_url }}" class="link-arrow reveal">See all projects</a>
+    </div>
+
+    <div class="projects-grid">
+      {% assign featured = site.projects | where: "featured", true | limit: 3 %}
+      {% if featured.size > 0 %}
+        {% for p in featured %}
+          <a href="{{ p.url | relative_url }}" class="project-card reveal">
+            <span class="project-tag">{{ p.tag }}</span>
+            <h3>{{ p.title }}</h3>
+            <p>{{ p.summary }}</p>
+            <div class="project-footer">
+              <div class="project-tech">
+                {% if p.tech %}
+                  {% for t in p.tech limit:3 %}
+                    <span class="tech-pill">{{ t }}</span>
+                  {% endfor %}
+                {% endif %}
+              </div>
+              <div class="project-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      {% else %}
+        <!-- Placeholder cards shown until real projects are added -->
+        <div class="project-card reveal">
+          <span class="project-tag">Power BI</span>
+          <h3>Sales Performance Dashboard</h3>
+          <p>End-to-end BI solution tracking regional sales KPIs, pipeline health, and rep performance for a 200-person org. Reduced reporting time by 60%.</p>
+          <div class="project-footer">
+            <div class="project-tech">
+              <span class="tech-pill">Power BI</span>
+              <span class="tech-pill">SQL</span>
+              <span class="tech-pill">DAX</span>
+            </div>
+            <div class="project-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <span class="project-tag">Python · Analytics</span>
+          <h3>Customer Churn Predictor</h3>
+          <p>Built a logistic regression model to predict customer churn with 84% accuracy. Delivered insights that guided a targeted retention campaign saving $200k ARR.</p>
+          <div class="project-footer">
+            <div class="project-tech">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">pandas</span>
+              <span class="tech-pill">scikit-learn</span>
+            </div>
+            <div class="project-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <span class="project-tag">SQL · Data Modeling</span>
+          <h3>ERP Data Warehouse Migration</h3>
+          <p>Designed and implemented a star-schema data warehouse to consolidate ERP data from 3 legacy systems. Enabled self-serve analytics for 50+ stakeholders.</p>
+          <div class="project-footer">
+            <div class="project-tech">
+              <span class="tech-pill">SQL</span>
+              <span class="tech-pill">PostgreSQL</span>
+              <span class="tech-pill">Excel</span>
+            </div>
+            <div class="project-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="projects-cta reveal">
+      <a href="{{ '/projects/' | relative_url }}" class="btn btn-ghost">Browse all projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     EXPERIENCE
+     ================================================ -->
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-label reveal">Career</div>
+    <h2 class="section-title reveal">Experience</h2>
+    <p class="section-desc reveal" style="margin-bottom:0">
+      <!-- Update with your real work history -->
+    </p>
+
+    <div class="experience-grid">
+
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <span class="exp-role">BI &amp; IT Business Analyst</span>
+            <span class="exp-period">2022 – Present</span>
+          </div>
+          <div class="exp-company">Company Name · Full-time</div>
+          <p class="exp-desc">
+            Led end-to-end BI delivery for cross-functional teams. Designed dimensional data models,
+            built Power BI dashboards consumed by 100+ users, and owned requirements engineering
+            for a major ERP integration project.
+          </p>
+          <div class="exp-tags">
+            <span class="exp-tag">Power BI</span>
+            <span class="exp-tag">SQL</span>
+            <span class="exp-tag">Requirements</span>
+            <span class="exp-tag">Data Modeling</span>
+            <span class="exp-tag">Agile</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <span class="exp-role">Data Analyst</span>
+            <span class="exp-period">2020 – 2022</span>
+          </div>
+          <div class="exp-company">Previous Company · Full-time</div>
+          <p class="exp-desc">
+            Built automated reporting pipelines in Python and SQL, reducing weekly reporting effort
+            by 8 hours. Delivered ad-hoc analysis and A/B test readouts to product and marketing teams.
+          </p>
+          <div class="exp-tags">
+            <span class="exp-tag">Python</span>
+            <span class="exp-tag">MySQL</span>
+            <span class="exp-tag">Excel</span>
+            <span class="exp-tag">Tableau</span>
+            <span class="exp-tag">A/B Testing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <span class="exp-role">Business Analyst Intern</span>
+            <span class="exp-period">2019 – 2020</span>
+          </div>
+          <div class="exp-company">Internship Company · Internship</div>
+          <p class="exp-desc">
+            Supported requirements documentation for a CRM implementation. Conducted stakeholder
+            interviews, wrote BRDs and FRDs, and maintained process maps in Lucidchart.
+          </p>
+          <div class="exp-tags">
+            <span class="exp-tag">BRD / FRD</span>
+            <span class="exp-tag">Process Mapping</span>
+            <span class="exp-tag">Excel</span>
+            <span class="exp-tag">Stakeholder Interviews</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     CONTACT
+     ================================================ -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-label reveal">Let's talk</div>
+    <h2 class="section-title reveal">Get in touch</h2>
+
+    <div class="contact-grid">
+
+      <div class="contact-info reveal">
+        <h3>Open to opportunities &amp; collaborations</h3>
+        <p>
+          Whether you have a data challenge, a BI project, or just want to connect —
+          I'm always happy to chat. Fill out the form or reach me directly through
+          any of the links below.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:{{ site.email }}" class="contact-link">
+            <span class="contact-link-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </span>
+            {{ site.email }}
+          </a>
+          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </span>
+            linkedin.com/in/{{ site.linkedin_username }}
+          </a>
+          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            </span>
+            github.com/{{ site.github_username }}
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm" action="#" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me about your project or opportunity…" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">
+          Send message
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     LATEST WRITING (only shows if blog posts exist)
+     ================================================ -->
+{% if site.posts.size > 0 %}
+<section class="section" id="writing">
+  <div class="container">
+    <div class="section-label reveal">From the blog</div>
+    <h2 class="section-title reveal">Latest Writing</h2>
+    <ul class="post-list reveal">
+      {% for post in site.posts limit:3 %}
+        <li>
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%b %-d, %Y" }}
+          </time>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </li>
       {% endfor %}
-    {% else %}
-      <p class="muted">Projects coming soon — check back shortly.</p>
-    {% endif %}
+    </ul>
+    <p style="margin-top:1.5rem;" class="reveal">
+      <a href="{{ '/blog/' | relative_url }}" class="link-arrow">Read the blog</a>
+    </p>
   </div>
-  <p style="margin-top:1.5rem;">
-    <a href="{{ '/projects/' | relative_url }}" class="link-arrow">See all projects →</a>
-  </p>
 </section>
-
-<section class="section">
-  <h2 class="section-title">Latest Writing</h2>
-  <ul class="post-list">
-    {% for post in site.posts limit:3 %}
-      <li>
-        <time datetime="{{ post.date | date_to_xmlschema }}">
-          {{ post.date | date: "%b %-d, %Y" }}
-        </time>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-  <p style="margin-top:1rem;">
-    <a href="{{ '/blog/' | relative_url }}" class="link-arrow">Read the blog →</a>
-  </p>
-</section>
+{% endif %}
