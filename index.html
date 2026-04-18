@@ -1,0 +1,110 @@
+---
+layout: default
+title: Home
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Business Intelligence · IT Business Analyst</p>
+    <h1 class="hero-title">Hi, I’m <span class="accent">Ranjan</span>.</h1>
+    <p class="hero-sub">
+      I turn messy data and ambiguous requirements into clear dashboards,
+      clean SQL, and decisions stakeholders can act on.
+    </p>
+    <div class="hero-cta">
+      <a href="{{ '/projects/' | relative_url }}" class="btn btn-primary">View Projects</a>
+      <a href="{{ site.resume_file | relative_url }}" class="btn btn-ghost" download>Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">About</h2>
+  <p class="section-body">
+    I’m a BI Analyst working at the intersection of data and business. My core toolkit
+    is SQL, Excel, and Python, and I’m currently deepening my work in data science and
+    analytics engineering. I care about asking the right question before writing the
+    first query, and about shipping analysis that is <em>reproducible</em> and
+    <em>explainable</em>.
+  </p>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Data &amp; SQL</h3>
+      <ul>
+        <li>MySQL, PostgreSQL</li>
+        <li>Window functions, CTEs</li>
+        <li>Query optimization</li>
+        <li>Data modeling (star / snowflake)</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>BI &amp; Visualization</h3>
+      <ul>
+        <li>Power BI, Tableau</li>
+        <li>Excel (advanced, Power Query)</li>
+        <li>Dashboard design</li>
+        <li>KPI definition</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Analytics &amp; Code</h3>
+      <ul>
+        <li>Python (pandas, numpy)</li>
+        <li>Statistics &amp; A/B testing</li>
+        <li>Git &amp; version control</li>
+        <li>Jupyter notebooks</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Business Analysis</h3>
+      <ul>
+        <li>Requirements gathering</li>
+        <li>BRD / FRD documentation</li>
+        <li>Stakeholder communication</li>
+        <li>Process mapping</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="projects-grid">
+    {% assign featured = site.projects | where: "featured", true | limit: 3 %}
+    {% if featured.size > 0 %}
+      {% for p in featured %}
+        <a href="{{ p.url | relative_url }}" class="project-card">
+          <p class="project-tag">{{ p.tag }}</p>
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.summary }}</p>
+        </a>
+      {% endfor %}
+    {% else %}
+      <p class="muted">Projects coming soon — check back shortly.</p>
+    {% endif %}
+  </div>
+  <p style="margin-top:1.5rem;">
+    <a href="{{ '/projects/' | relative_url }}" class="link-arrow">See all projects →</a>
+  </p>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Latest Writing</h2>
+  <ul class="post-list">
+    {% for post in site.posts limit:3 %}
+      <li>
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%b %-d, %Y" }}
+        </time>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <p style="margin-top:1rem;">
+    <a href="{{ '/blog/' | relative_url }}" class="link-arrow">Read the blog →</a>
+  </p>
+</section>
