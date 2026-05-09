@@ -261,6 +261,50 @@ nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
   background: var(--bg-alt); color: var(--text); border: 1px solid var(--border);
 }
 
+/* ===== Education & Certifications ===== */
+.edu-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px; align-items: start; }
+.edu-block-title {
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+}
+.edu-block-icon { font-size: 1rem; }
+.edu-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 28px; box-shadow: var(--card-shadow);
+}
+.edu-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+.edu-degree { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.edu-institution { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+.edu-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+.certs-list { display: flex; flex-direction: column; gap: 12px; }
+.cert-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px 20px;
+  box-shadow: var(--card-shadow); transition: all 0.2s;
+}
+.cert-card:hover { box-shadow: var(--card-shadow-hover); transform: translateX(4px); }
+.cert-badge {
+  width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.04em; font-family: var(--font-mono);
+}
+.cert-info { flex: 1; min-width: 0; }
+.cert-name { font-size: 0.88rem; font-weight: 600; color: var(--text); line-height: 1.3; }
+.cert-issuer { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+.cert-verify {
+  font-size: 0.78rem; font-weight: 600; color: var(--accent); white-space: nowrap;
+  padding: 5px 10px; border: 1px solid var(--border); border-radius: 6px;
+  transition: all 0.15s; flex-shrink: 0;
+}
+.cert-verify:hover { border-color: var(--accent); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .edu-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cert-card { flex-wrap: wrap; }
+}
+
 /* ===== Contact ===== */
 .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 .contact-links { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
